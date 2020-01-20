@@ -8,7 +8,7 @@ class HomePage extends Component {
 
 	componentDidMount(){
 	  const token = localStorage.getItem('token')
-	  console.log(token);
+	  //console.log(token);
 	  if (token && (token !== undefined && token !== null && token !== "undefined")) {
 		const options =   {
 		  headers: {
@@ -53,7 +53,7 @@ class HomePage extends Component {
 	
 	function mapStateToProps(state) {
 	  return {
-		loggedIn: state.auth.loggedIn
+		loggedIn: state.user.loggedIn
 	  }
 	}
 	

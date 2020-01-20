@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { NavLink } from 'react-router-dom'
+import { withRouter, NavLink } from 'react-router-dom'
 import { logOut } from "../actions";
 
 class Nav extends Component {
 	handleLogout = () => {
 	  this.props.logOut();
 	  localStorage.clear();
+	  this.props.history.push("/")
 	}
 	render(){
+		//console.log(this.props)
 		return (
 		  <div>
 			{this.props.loggedIn ? (
@@ -25,10 +27,11 @@ class Nav extends Component {
 				  className="link item"
 				>Profile</NavLink>
 				<NavLink
-				  to="/"
-				  exact
-				  className="link item"
-				>Foodr Search</NavLink>
+              to="/"
+              exact
+              className="active item"
+              id="site-name"
+            >Leftovers Search</NavLink>
 				<div className="right menu">
 				  <div className=" fluid item">
 					<div className="ui transparent icon input">
@@ -64,8 +67,8 @@ class Nav extends Component {
 	}
 	function mapStateToProps(state) {
 		return {
-		  loggedIn: state.auth.loggedIn
+		  loggedIn: state.user.loggedIn
 		}
 	  }
-export default connect(mapStateToProps, { logOut })(Nav);
+	  export default withRouter(connect(mapStateToProps, { logOut })(Nav));
 	
