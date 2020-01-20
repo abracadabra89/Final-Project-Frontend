@@ -33,3 +33,7 @@ export function fetchInitialRestaurants() {
 		return { type: "LOG_OUT" };
 	}
 
+	export function deleteRestaurant() {
+		return { type: "DELETE_RESTAURANT" }
+	  }
+

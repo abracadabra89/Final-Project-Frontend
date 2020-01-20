@@ -29,7 +29,7 @@ const style = {
 	  });
   
 	render() {
-	  console.log(this.props.restaurants);
+	  //console.log(this.props.restaurants);
 	  return (
 		<Map google={this.props.google}
 			style={style}
@@ -40,10 +40,15 @@ const style = {
 			zoom={15}
 			onClick={this.onMapClicked}>
   
-			{/* {this.props.restaurants} */}
-		  <Marker onClick={this.onMarkerClick}
-				  name={'Current location'} />
-  
+			{this.props.restaurants ? (this.props.restaurants.map(rest => {
+          return <Marker key={rest.id}
+              onClick={this.onMarkerClick}
+              name={rest.name}
+              position={{lat: rest.latitude, lng: rest.longitude}}
+            />
+          })
+        ) : (null)}
+         
 		  <InfoWindow
 			marker={this.state.activeMarker}
 			visible={this.state.showingInfoWindow}>
