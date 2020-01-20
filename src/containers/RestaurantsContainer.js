@@ -11,15 +11,15 @@ class RestaurantsContainer extends React.Component {
 
   render() {
     // console.log(this.props)
-    // console.log(this.props.restaurants.selectedRestaurant);
+    // console.log(this.props.restaurants.chosenRestaurant);
     return (
       <div className="ui grid">
         <div className="six wide column">
           <AllRestaurants restaurants={this.props.restaurants}/>
         </div>
           <div className="ten wide column">
-          {this.props.restaurants.selectedRestaurant !== null ? (
-            <ShowRestaurants selectedRestaurant={this.props.restaurants.selectedRestaurant} />
+          {this.props.restaurants.chosenRestaurant !== null ? (
+            <ShowRestaurants chosenRestaurant={this.props.restaurants.chosenRestaurant} />
           ) : (
             <h3>select a restaurant</h3>
           )}
@@ -33,7 +33,7 @@ class RestaurantsContainer extends React.Component {
 const mapStateToProps = state => ({
   restaurants: state.restaurants,
   chosenRestaurant: state.chosenRestaurant
-  // state.restaurants.find(r => r.id === state.selectedRestaurant)
+  // state.restaurants.find(r => r.id === state.chosenRestaurant)
 });
 
 export default connect(mapStateToProps, { fetchInitialRestaurants })(RestaurantsContainer);

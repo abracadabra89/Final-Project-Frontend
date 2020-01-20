@@ -1,10 +1,10 @@
 import { RestfulAdapter } from "../adapters";
 
-export function fetchInitialRestaurants(location) {
+export function fetchInitialRestaurants() {
 	
 		return dispatch => {
 			dispatch({ type: "RESTAURANTS_LOADING" });
-			RestfulAdapter.indexFetch("businesses").then(data => {
+			RestfulAdapter.indexFetch("restaurants").then(data => {
 			  dispatch({ type: "RESTAURANTS_LOAD", payload: data });
 			});
 		  };

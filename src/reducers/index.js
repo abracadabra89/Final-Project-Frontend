@@ -17,7 +17,8 @@ const restaurantsReducer = (state = { restaurants: [], chosenRestaurant: null, l
 		// console.log(action.payload);
 		return {
 			...state,
-			chosenRestaurant: action.payload
+			restaurants: action.payload,
+			//chosenRestaurant: action.payload
 		}
 		default:
 		return state;

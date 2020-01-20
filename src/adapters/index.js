@@ -1,4 +1,4 @@
-const baseUrl = `http://localhost:3000`;
+const API = `http://localhost:3000`;
 
 function headers() {
   return {
@@ -8,25 +8,25 @@ function headers() {
 }
 export class RestfulAdapter {
 	static indexFetch(route) {
-	  return fetch(`${baseUrl}/${route}`, getRequest()).then(responseHandler);
+	  return fetch(`${API}/${route}`, getRequest()).then(responseHandler);
 	}
 	static showFetch(route, id) {
-	  return fetch(`${baseUrl}/${route}/${id}`, getRequest()).then(
+	  return fetch(`${API}/${route}/${id}`, getRequest()).then(
 		responseHandler
 	  );
 	}
 	static createFetch(route, body) {
-	  return fetch(`${baseUrl}/${route}`, postRequest(body)).then(
+	  return fetch(`${API}/${route}`, postRequest(body)).then(
 		responseHandler
 	  );
 	}
 	static editFetch(route, id, body) {
-		return fetch(`${baseUrl}/${route}/${id}`, patchRequest(body)).then(
+		return fetch(`${API}/${route}/${id}`, patchRequest(body)).then(
 		  responseHandler
 		);
 	  }
 	  static deleteFetch(route, id) {
-		return fetch(`${baseUrl}/${route}/${id}`, {
+		return fetch(`${API}/${route}/${id}`, {
 		  method: "DELETE",
 		  headers: headers()
 		}).then(responseHandler);
@@ -58,6 +58,7 @@ export class RestfulAdapter {
 	  function responseHandler(response) {
 		  if (response.ok) {
 			return response.json()
+		} else {
+			console.log("ERROR", response.json());
 		  }
-		  throw alert('Something went wrong')
 	  }

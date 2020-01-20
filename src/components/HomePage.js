@@ -26,25 +26,22 @@ class HomePage extends Component {
   
 	}
 	handleLogin = (user) => {
-		const token = localStorage.getItem('token')
-		if (!!token) {
-		  console.log("token present")
-		} else {
-		  localStorage.setItem('token', user.jwt)
-		}
-		this.props.logIn(user)
+		this.props.logIn(user);
+		localStorage.setItem('token', user.jwt);
 	  }
 	
 	  render() {
 		return (
 		  <div id="home">
-			{ this.props.loggedIn ? (
+			{ 
+				this.props.loggedIn ? 
+				(
 			  <div>
 				<RestaurantsContainer />
 			  </div>
 			) :(
 			  <div>
-				<LoginForm history={this.props.history} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedIn={this.props.loggedIn}/>
+			  <LoginForm handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedIn={this.props.loggedIn}/>
 			  </div>
 			)
 		  }
@@ -55,7 +52,7 @@ class HomePage extends Component {
 	
 	function mapStateToProps(state) {
 	  return {
-		loggedIn: state.user.loggedIn
+		loggedIn: state.auth.loggedIn
 	  }
 	}
 	

@@ -11,9 +11,10 @@ class AllRestaurants extends React.Component {
   render() {
     // console.log(this.props);
     return (
-      <div>
+		<div>
+		<h2>Restaurants</h2>
         {this.props.restaurants.restaurants.length ? (
-          <div>
+          <div className="column">
             {this.props.restaurants.restaurants.map(rest => <RestaurantList key={rest.id} restaurant={rest} />)}
           </div>
         ) : (
