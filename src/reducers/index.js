@@ -18,18 +18,18 @@ const restaurantsReducer = (state = { restaurants: [], chosenRestaurant: null, l
 		return {
 			...state,
 			restaurants: action.payload,
-			//chosenRestaurant: action.payload
+			chosenRestaurant: action.payload
 		}
 		default:
 		return state;
 	}
 }
-const authReducer = (state={loggedIn: false, currentUser: null}, action) => {
+const userReducer = (state={loggedIn: false, currentUser: null, loading:false}, action) => {
 	switch (action.type) {
 	  case "LOG_IN":
 		return {
 		  ...state,
-		  loggedIn: true,
+		  loggedIn: false,
 		  currentUser: action.payload
 		};
 	  case "LOG_OUT":
@@ -38,6 +38,26 @@ const authReducer = (state={loggedIn: false, currentUser: null}, action) => {
 		  loggedIn: false,
 		  currentUser: null
 		};
+		case "FAVORITE LOAD":
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          favorites: [...state.currentUser.favorites, action.payload]
+        }
+      }
+    case "USER_LOADING":
+      return {
+        ...state,
+        loading: true
+      }
+    case "USER_LOAD":
+      return {
+        ...state,
+        currentUser: action.payload,
+        loading: false
+      };
+
 	  default:
 		return state;
 	}
@@ -45,7 +65,7 @@ const authReducer = (state={loggedIn: false, currentUser: null}, action) => {
   }
 
 const rootReducer = combineReducers({
-	auth: authReducer,
+	user: userReducer,
 	restaurants: restaurantsReducer
   });
   
