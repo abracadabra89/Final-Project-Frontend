@@ -28,7 +28,7 @@ class HomePage extends Component {
 	}
 	handleLogin = (user) => {
 		const token = localStorage.getItem('token')
-		console.log(token);
+		//console.log(token);
 		if (!!token) {
 		console.log('token is valid')
 		} else {
