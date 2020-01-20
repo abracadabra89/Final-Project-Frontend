@@ -10,6 +10,17 @@ export function fetchInitialRestaurants() {
 		  };
 		}
 
+		export function postFavoriteRestaurant(id){
+			return dispatch => {
+			  dispatch({ type: "RESTAURANTS_LOADING" });
+			  const body = {restaurant_id: id}
+			  RestfulAdapter.createFetch("favorites", body).then(data => {
+				dispatch({ type: "FAVORITE_LOAD", payload: data})
+			  });
+			}
+		  }
+
+
 	export function chooseRestaurant(restaurant) {
 		return { type: "CHOOSE_RESTAURANT", payload: restaurant };
 	}
