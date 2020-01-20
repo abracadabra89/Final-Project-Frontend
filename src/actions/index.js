@@ -1,12 +1,14 @@
+import { RestfulAdapter } from "../adapters";
+
 export function fetchInitialRestaurants(location) {
 	
-	return dispatch => {
-		dispatch({ type: "RESTAURANTS_LOADING" });
-		RestfulAdapter.indexFetch("restaurants").then(data => {
-		  dispatch({ type: "RESTAURANTS_LOAD", payload: data });
-		});
-	  };
-	}
+		return dispatch => {
+			dispatch({ type: "RESTAURANTS_LOADING" });
+			RestfulAdapter.indexFetch("businesses").then(data => {
+			  dispatch({ type: "RESTAURANTS_LOAD", payload: data });
+			});
+		  };
+		}
 
 	export function chooseRestaurant(restaurant) {
 		return { type: "CHOOSE_RESTAURANT", payload: restaurant };
@@ -19,3 +21,4 @@ export function fetchInitialRestaurants(location) {
 	export function logOut() {
 		return { type: "LOG_OUT" };
 	}
+

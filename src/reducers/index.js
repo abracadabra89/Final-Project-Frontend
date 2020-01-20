@@ -14,8 +14,7 @@ const restaurantsReducer = (state = { restaurants: [], chosenRestaurant: null, l
 		return {
 		  ...state,
 		  chosenRestaurant: action.payload
-		}
-		
+		}	
 	  default:
 		return state;
 	}
@@ -29,8 +28,11 @@ const restaurantsReducer = (state = { restaurants: [], chosenRestaurant: null, l
 						latitude: action.payload.coords.latitude,
 						longitude: action.payload.coords.longitude,
 					}
+				
 				}
 			}
+			default:
+				return state;
 		}
 	}
 

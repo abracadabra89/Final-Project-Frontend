@@ -7,10 +7,18 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "google-maps-react": "^2.0.2",
     "react": "^16.12.0",
+    "lodash": "^4.17.10",
     "react-dom": "^16.12.0",
+    "react-redux": "^5.1.2",
+    "react-router-dom": "4.3.1",
     "react-scripts": "3.3.0",
-    "redux-rest-adapter": "^2.0.7"
+    "redux": "^3.7.2",
+    "redux-rest-adapter": "^2.0.7",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.82.1"
   },
   "scripts": {
     "start": "react-scripts start",

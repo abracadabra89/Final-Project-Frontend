@@ -1,7 +1,6 @@
 import React from "react";
 import { Dimmer } from 'semantic-ui-react'
-import { delay } from 'lodash'
-import { fetchInitialRestaurants, getLocation } from "../actions";
+import { fetchInitialRestaurants } from "../actions";
 import { connect } from "react-redux";
 
 
@@ -14,11 +13,7 @@ class RestaurantsContainer extends React.Component {
 				this.props.fetchInitialRestaurants(this.props.location)
 				}
 			}
-		handleSearchClick = (e) => {
-			e.target.innerHTML = "Searching..."
-			this.props.getLocation()
-			delay(this.deactivateDimmer, 3000)
-		}
+		
 		render() {
 			const { active } = this.state
 			return (
@@ -37,4 +32,4 @@ class RestaurantsContainer extends React.Component {
 				loading: state.user.loading
 		});
 
-export default connect(mapStateToProps, { fetchInitialRestaurants, getLocation  })(RestaurantsContainer)
+export default connect(mapStateToProps, { fetchInitialRestaurants  })(RestaurantsContainer)

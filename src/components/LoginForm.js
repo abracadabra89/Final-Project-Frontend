@@ -28,7 +28,7 @@ class LoginForm extends Component {
 			.then(user => {
 				this.props.handleLogin(user)
 			})
-		}:
+		}
 		
 		render() {
 		// console.log('isLoggedIn?', this.props.loggedIn === true);
