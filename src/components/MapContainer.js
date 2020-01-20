@@ -1,8 +1,8 @@
 import React from 'react';
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from "react-redux";
-
-const apiKey = "AIzaSyAq7Oie9B59iCKYYlaPfoOuBmS3MzS4Z_g"
+ 
+const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const style = {
 	width: '100%',
@@ -33,7 +33,7 @@ const style = {
 	  return (
 		<Map google={this.props.google}
 			style={style}
-			center={{
+			initialCenter={{
 			  lat: 40.7007739,
 			  lng: -73.9877738
 			}}
@@ -66,5 +66,5 @@ const style = {
   });
   
   export default connect(mapStateToProps)(GoogleApiWrapper({
-	apiKey: apiKey
+	API_KEY: API_KEY
   })(MapContainer))

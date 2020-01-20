@@ -30,7 +30,7 @@ class HomePage extends Component {
 		const token = localStorage.getItem('token')
 		//console.log(token);
 		if (!!token) {
-		console.log('token is invalid')
+		console.log('token is present')
 		} else {
 			localStorage.setItem('token', user.jwt)
 		}

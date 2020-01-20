@@ -5,6 +5,13 @@ import { deleteRestaurant } from "../actions";
 
 
 class ShowRestaurants extends React.Component {
+	constructor(){
+		super()
+		this.state = {
+			active:false
+		}
+	}
+	
 	render(){
 		const { id, image_url, name, address, items } = this.props.chosenRestaurant
     return (

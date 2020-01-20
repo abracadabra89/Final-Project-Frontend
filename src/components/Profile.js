@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import SingleMapContainer from './SingleMapContainer'
+
 
 class Profile extends Component {
 
@@ -15,7 +17,7 @@ class Profile extends Component {
               this.props.currentUser.favorites.map(restaurant => <li key={restaurant.id}>{restaurant.name}</li> )
             ) : (null)}
             </ul>
-
+				<SingleMapContainer />
           </div>
         ) : (
           <p>Loading</p>
