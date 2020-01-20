@@ -24,12 +24,12 @@ const restaurantsReducer = (state = { restaurants: [], chosenRestaurant: null, l
 		return state;
 	}
 }
-const userReducer = (state={loggedIn: false, currentUser: null, loading:false}, action) => {
+const userReducer = (state={loggedIn: false, currentUser: null, loading:false,  currentLocation: {}}, action) => {
 	switch (action.type) {
 	  case "LOG_IN":
 		return {
 		  ...state,
-		  loggedIn: false,
+		  loggedIn: true,
 		  currentUser: action.payload
 		};
 	  case "LOG_OUT":
@@ -38,29 +38,32 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading:false}, 
 		  loggedIn: false,
 		  currentUser: null
 		};
-		case "FAVORITE LOAD":
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-          favorites: [...state.currentUser.favorites, action.payload]
-        }
-      }
-    case "USER_LOADING":
-      return {
-        ...state,
-        loading: true
-      }
-    case "USER_LOAD":
-      return {
-        ...state,
-        currentUser: action.payload,
-        loading: false
-      };
+		
+		case "USER_LOADING":
+		return {
+			...state,
+			loading: true
+		}
+		case "USER_LOAD":
+		return {
+			...state,
+			currentUser: action.payload,
+			loading: false
+		};
+		case "GET_GEOLOCATION": {
+			return {
+				...state,
+				location: {
+					latitude: action.payload.coords.latitude,
+					longitude: action.payload.coords.longitude,
+  
+				}
+			}
+		}
 
-	  default:
-		return state;
-	}
+		default:
+			return state;
+		}
   
   }
 

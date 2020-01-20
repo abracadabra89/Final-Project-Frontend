@@ -36,4 +36,38 @@ export function fetchInitialRestaurants() {
 	export function deleteRestaurant() {
 		return { type: "DELETE_RESTAURANT" }
 	  }
+	  export const getGeolocation = () => {
+
+		const defaultLocation = {
+				coords: {
+				  latitude: 40.7007739,
+				  longitude: -73.9877738
+				}
+			};
+	
+		const geolocation = navigator.geolocation;
+	
+		const location = new Promise((resolve, reject) => {
+			if (!geolocation) {
+				reject(new Error('Not Supported'));
+			}
+	
+		geolocation.getCurrentPosition((position) => {
+			resolve(position);
+		}, () => {
+			reject (new Error('Permission denied'));
+		});
+	  });
+	
+	  if (!location) {
+		return dispatch => dispatch({type: "GET_GEOLOCATION",
+		payload: defaultLocation})
+	  } else {
+		  return dispatch => dispatch({
+			type: "GET_GEOLOCATION",
+			payload: location
+		  })
+		}
+	  }
+		
 

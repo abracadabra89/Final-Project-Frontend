@@ -1,12 +1,10 @@
 import React from "react";
 import RestaurantList from "../components/RestaurantList";
+import { List } from 'semantic-ui-react'
 // import { connect } from "react-redux";
 // import { fetchInitialRestaurants } from "../actions";
 
 class AllRestaurants extends React.Component {
-  // componentDidMount() {
-  //   this.props.fetchInitialRestaurants()
-  // }
 
   render() {
     // console.log(this.props);
@@ -14,17 +12,27 @@ class AllRestaurants extends React.Component {
 		<div>
 		<h2>Restaurants</h2>
         {this.props.restaurants.restaurants.length ? (
-          <div className="column">
-            {this.props.restaurants.restaurants.map(rest => <RestaurantList key={rest.id} restaurant={rest} />)}
-          </div>
-        ) : (
-          <p>Loading</p>
-          )
+			<List animated verticalAlign='middle'>
+                    {this.props.restaurants.restaurants.map(rest =>
+                        {
+                        return (
+                                <List.Item key={rest.id}>
+                                  <List.Content>
+                                    <RestaurantList restaurant={rest} />
+                                  </List.Content>
+                                </List.Item>
+                              );
+                        }
+                      )}
+                  </List>
+                ) : (
+                  <p>Loading</p>
+                  )
+                }
+          </div>)
         }
-      </div>
-    )
   }
 
-}
+
 
 export default AllRestaurants;
