@@ -1,6 +1,5 @@
 import React from "react";
-import React from "react";
-import RestaurantListEl from "../components/RestaurantListEl";
+import RestaurantList from "../components/RestaurantList";
 // import { connect } from "react-redux";
 // import { fetchInitialRestaurants } from "../actions";
 
@@ -15,7 +14,7 @@ class AllRestaurants extends React.Component {
       <div>
         {this.props.restaurants.restaurants.length ? (
           <div>
-            {this.props.restaurants.restaurants.map(rest => <RestaurantListEl key={rest.id} restaurant={rest} />)}
+            {this.props.restaurants.restaurants.map(rest => <RestaurantList key={rest.id} restaurant={rest} />)}
           </div>
         ) : (
           <p>Loading</p>

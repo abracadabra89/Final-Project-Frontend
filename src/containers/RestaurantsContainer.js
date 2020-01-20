@@ -32,7 +32,7 @@ class RestaurantsContainer extends React.Component {
 
 const mapStateToProps = state => ({
   restaurants: state.restaurants,
-  selectedRestaurant: state.selectedRestaurant
+  chosenRestaurant: state.chosenRestaurant
   // state.restaurants.find(r => r.id === state.selectedRestaurant)
 });
 
