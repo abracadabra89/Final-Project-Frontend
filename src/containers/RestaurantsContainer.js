@@ -3,6 +3,7 @@ import AllRestaurants from "./AllRestaurants";
 import ShowRestaurants from "../components/ShowRestaurants";
 import { fetchInitialRestaurants, postFavoriteRestaurant } from "../actions";
 import { connect } from "react-redux";
+import MapContainer from "../components/MapContainer";
 
 class RestaurantsContainer extends React.Component {
   componentDidMount() {
@@ -19,16 +20,26 @@ class RestaurantsContainer extends React.Component {
     return (
       <div className="ui grid">
         <div className="six wide column">
-          <AllRestaurants restaurants={this.props.restaurants}/>
+		{this.props.restaurants !== null ? (
+		<AllRestaurants restaurants={this.props.restaurants}/>
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
           <div className="ten wide column">
-          {this.props.restaurants.chosenRestaurant !== null ? (
-            <ShowRestaurants chosenRestaurant={this.props.restaurants.chosenRestaurant} addFavorite={this.handleClick}/>
+              <MapContainer />
+          {this.props.selectedRestaurant !== null ? (
+            <ShowRestaurants
+              location={this.props.location}
+              selectedRestaurant={this.props.selectedRestaurant}
+              addFavorite={this.handleFavoriteClick}
+            />
           ) : (
-            <h3>select a restaurant</h3>
+            null
           )}
         </div>
       </div>
+
     );
   }
 }

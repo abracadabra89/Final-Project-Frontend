@@ -2,7 +2,7 @@ import React from 'react';
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from "react-redux";
 
-apiKey = "AIzaSyAq7Oie9B59iCKYYlaPfoOuBmS3MzS4Z_g"
+const apiKey = "AIzaSyAq7Oie9B59iCKYYlaPfoOuBmS3MzS4Z_g"
 
 const style = {
 	width: '100%',
