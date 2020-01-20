@@ -1,8 +1,9 @@
 import React from "react";
+import { Button } from 'semantic-ui-react'
 
 class ShowRestaurants extends React.Component {
 	render(){
-		const { image_url, name, address, item } = this.props.chosenRestaurant
+		const { id, image_url, name, address, item } = this.props.chosenRestaurant
     return (
 		<div className="ui container segment">
         <div className="ui small centered image">
@@ -11,7 +12,8 @@ class ShowRestaurants extends React.Component {
         <h1>{name}</h1>
         <h3>{address}</h3>
 		<li>{item}</li>
-        <div className="ui four column doubling stackable grid container">     
+        <div className="ui four column doubling stackable grid container">
+		<Button icon="star outline" onClick={() => this.props.addFavorite(id)}/>     
       	  </div>
      	 </div>
     	);

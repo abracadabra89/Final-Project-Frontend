@@ -27,9 +27,15 @@ class HomePage extends Component {
   
 	}
 	handleLogin = (user) => {
-		this.props.logIn(user);
-		localStorage.setItem('token', user.jwt);
-	  }
+		const token = localStorage.getItem('token')
+		console.log(token);
+		if (!!token) {
+		console.log('token is valid')
+		} else {
+			localStorage.setItem('token', user.jwt)
+		}
+		this.props.logIn(user)
+	}
 	
 	  render() {
 		return (
