@@ -1,35 +1,39 @@
 import React from "react";
-import { Dimmer } from 'semantic-ui-react'
+import AllRestaurants from "./AllRestaurants";
+import ShowRestaurants from "../components/ShowRestaurants";
 import { fetchInitialRestaurants } from "../actions";
 import { connect } from "react-redux";
 
-
 class RestaurantsContainer extends React.Component {
-	state = {
-		active: true
-	}
-		componentDidUpdate(prevProps) {
-			if (this.props.location !== prevProps.location) {
-				this.props.fetchInitialRestaurants(this.props.location)
-				}
-			}
-		
-		render() {
-			const { active } = this.state
-			return (
-			<div className="ui grid">
-			<Dimmer active={active} onClickOutside={this.handleClose} page>
-			</Dimmer>
-			</div>
-			)
-		}
-	}
-			
+  componentDidMount() {
+    this.props.fetchInitialRestaurants()
+  }
 
-			const mapStateToProps = state => ({
-				chosenRestaurant: state.restaurants.chosenRestaurant,
-				location: state.user.location,
-				loading: state.user.loading
-		});
+  render() {
+    // console.log(this.props)
+    // console.log(this.props.restaurants.selectedRestaurant);
+    return (
+      <div className="ui grid">
+        <div className="six wide column">
+          <AllRestaurants restaurants={this.props.restaurants}/>
+        </div>
+          <div className="ten wide column">
+          {this.props.restaurants.selectedRestaurant !== null ? (
+            <ShowRestaurants selectedRestaurant={this.props.restaurants.selectedRestaurant} />
+          ) : (
+            <h3>select a restaurant</h3>
+          )}
+        </div>
+      </div>
+    );
+  }
+}
 
-export default connect(mapStateToProps, { fetchInitialRestaurants  })(RestaurantsContainer)
+
+const mapStateToProps = state => ({
+  restaurants: state.restaurants,
+  selectedRestaurant: state.selectedRestaurant
+  // state.restaurants.find(r => r.id === state.selectedRestaurant)
+});
+
+export default connect(mapStateToProps, { fetchInitialRestaurants })(RestaurantsContainer);
