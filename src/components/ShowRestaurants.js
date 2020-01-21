@@ -17,9 +17,9 @@ class ShowRestaurants extends React.Component {
   }
 
   render() {
-    const { id, image_url, name, address, items } = this.props.chosenRestaurant;
+    const { id, image_url, name, address, items, latitude, longitude } = this.props.chosenRestaurant;
     return (
-      <div className="ui container segment" style={style}>
+      <div className="ui container segment center aligned" style={style}>
         <div className="column"></div>
         <Button
           floated="right"
@@ -31,6 +31,14 @@ class ShowRestaurants extends React.Component {
           <img src={image_url} styles={{ maxHeight: "10px" }} alt=""></img>
         </div>
         <h1>{name}</h1>
+        <h3>
+          <a
+            target="_new"
+            href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.location.latitude}%2C${this.props.location.longitude}&destination=${latitude}%2C${longitude}`}
+          >
+            {address}
+          </a>
+        </h3>
         <h3>{address}</h3>
         <h3>{items}</h3>
         <div className="ui four column doubling stackable grid container">

@@ -60,9 +60,9 @@ class Nav extends Component {
                   ></i>
                 </div>
               </div>
-              <a className="item" onClick={this.handleLogout}>
-                Log Out
-              </a>
+                <button className="item" onClick={this.handleLogout}>
+                  Logout
+                </button>
             </div>
           </div>
         ) : (
