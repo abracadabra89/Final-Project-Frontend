@@ -25,15 +25,8 @@ class ShowRestaurants extends React.Component {
           floated="right"
           circular
           icon="close"
-          onClick={() => this.props.clearRestaurant()}
+          onClick={() => this.props.deleteRestaurant()}
         />
-        <Button
-          floated="right"
-          inverted
-          color="yellow"
-          icon="star outline"
-          onClick={() => this.props.addFavorite(id)}
-        ></Button>
         <div className="ui small centered image">
           <img src={image_url} styles={{ maxHeight: "10px" }} alt=""></img>
         </div>
@@ -41,15 +34,9 @@ class ShowRestaurants extends React.Component {
         <h3>{address}</h3>
         <h3>{items}</h3>
         <div className="ui four column doubling stackable grid container">
-          <Button
-            icon="star outline"
-            onClick={() => this.props.addFavorite(id)}
-          />
-          <Button
-            circular
-            icon="close"
-            onClick={() => this.props.deleteRestaurant()}
-          />
+          <Button fluid onClick={() => this.props.addFav(id)}>
+            Add to Favs
+          </Button>
         </div>
       </div>
     );

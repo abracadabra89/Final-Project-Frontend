@@ -37,7 +37,7 @@ class RestaurantsContainer extends React.Component {
             <ShowRestaurants
               location={this.props.location}
               chosenRestaurant={this.props.chosenRestaurant}
-              addFavorite={this.handleFavoriteClick}
+              addFav={this.handleFavoriteClick}
             />
           ) : null}
         </div>
