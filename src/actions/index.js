@@ -1,9 +1,13 @@
 import { RestfulAdapter } from "../adapters";
 
-export function fetchInitialRestaurants() {
+export function fetchInitialRestaurants(location) {
   return dispatch => {
     dispatch({ type: "RESTAURANTS_LOADING" });
-    let body = { term: "Items", latitude: 40.7007739, longitude: -73.9877738 };
+    let body = {
+      term: "Items",
+      latitude: location.latitude,
+      longitude: location.longitude
+    };
     RestfulAdapter.createFetch("searches", body).then(data => {
       dispatch({ type: "RESTAURANTS_LOAD", payload: data });
     });
@@ -62,27 +66,47 @@ export const getNewLocation = location => {
 };
 
 export const getGeolocation = () => {
-  let action = {};
-  const defaultLocation = {
-    coords: {
-      latitude: 40.7007739,
-      longitude: -73.9877738
-    }
-  };
-  const geolocation = navigator.geolocation;
-  const location = geolocation.getCurrentPosition(position => position);
-  if (!location) {
-    action = {
-      type: "GET_GEOLOCATION",
-      payload: defaultLocation
-    };
-  } else {
-    action = {
-      type: "GET_GEOLOCATION",
-      payload: location
-    };
-  }
   return dispatch => {
-    dispatch(action);
+	  dispatch({ type: "LOCATION_LOADING" });
+    const geolocation = navigator.geolocation;
+    const location = new Promise((resolve, reject) => {
+      if (!geolocation) {
+        reject(new Error("Not Supported"));
+      }
+      geolocation.getCurrentPosition(
+        position => {
+          resolve(position);
+        },
+        () => {
+          reject(new Error("Permission denied"));
+        }
+      );
+    })
+      .then(position => getPosition(position))
+      .then(position => {
+        if (!position) {
+          //console.log("no position");
+          dispatch({
+            type: "NO_LOCATION"
+          });
+        } else {
+          console.log(position);
+          dispatch({
+            type: "GET_GEOLOCATION",
+            payload: position
+          });
+        }
+        return position;
+      })
+      .then(position => {
+        console.log(position);
+        fetchInitialRestaurants({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      });
   };
+};
+const getPosition = position => {
+  return position;
 };

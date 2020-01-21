@@ -12,7 +12,13 @@ import MapContainer from "../components/MapContainer";
 class RestaurantsContainer extends React.Component {
   componentDidMount() {
     this.props.getGeolocation();
-    this.props.fetchInitialRestaurants();
+    //this.props.fetchInitialRestaurants(this.props.location);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.props.fetchInitialRestaurants(this.props.location);
+    }
   }
 
   handleFavClick = id => {
