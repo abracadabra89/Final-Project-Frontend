@@ -23,7 +23,7 @@ export function postFavRestaurant(id) {
 export function deleteFavRestaurant(id) {
   return dispatch => {
     RestfulAdapter.deleteFetch("favorites", id).then(data => {
-      dispatch({ type: "DELETE_FAV", payload: data });
+      dispatch({ type: "FAV_LOADING", payload: data });
     });
   };
 }
