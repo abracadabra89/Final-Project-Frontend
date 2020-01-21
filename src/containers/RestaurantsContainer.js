@@ -16,7 +16,7 @@ class RestaurantsContainer extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
+     console.log(this.props)
     // console.log(this.props.restaurants.chosenRestaurant);
     return (
       <div className="ui grid">
@@ -29,10 +29,10 @@ class RestaurantsContainer extends React.Component {
         </div>
           <div className="ten wide column">
               <MapContainer />
-          {this.props.selectedRestaurant !== null ? (
+          {this.props.chosenRestaurant !== null ? (
             <ShowRestaurants
               location={this.props.location}
-              selectedRestaurant={this.props.selectedRestaurant}
+              chosenRestaurant={this.props.chosenRestaurant}
               addFavorite={this.handleFavoriteClick}
             />
           ) : (
@@ -47,8 +47,9 @@ class RestaurantsContainer extends React.Component {
 
 
 const mapStateToProps = state => ({
-  restaurants: state.restaurants,
-  chosenRestaurant: state.chosenRestaurant
+  restaurants: state.restaurants.restaurants,
+  chosenRestaurant: state.restaurants.chosenRestaurant,
+  location: state.user.location
   // state.restaurants.find(r => r.id === state.chosenRestaurant)
 });
 

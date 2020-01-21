@@ -11,9 +11,9 @@ class AllRestaurants extends React.Component {
     return (
 		<div>
 		<h2>Restaurants</h2>
-        {this.props.restaurants.restaurants.length ? (
+        {this.props.restaurants !== undefined ? (
 			<List animated verticalAlign='middle'>
-                    {this.props.restaurants.restaurants.map(rest =>
+                    {this.props.restaurants.map(rest =>
                         {
                         return (
                                 <List.Item key={rest.id}>

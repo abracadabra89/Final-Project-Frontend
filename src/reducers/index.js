@@ -7,48 +7,46 @@ const restaurantsReducer = (state = { restaurants: [], chosenRestaurant: null, l
 				...state,
 				loading: true
 			}
-			case "RESTAURANTS_LOAD":
-		// console.log(action);
-		return {
-			...state,
-			loading: true
-		}
+		case "RESTAURANTS_LOAD":
+			return {
+				...state,
+				loading: true
+			}
 		case "CHOOSE_RESTAURANT":
-		// console.log(action.payload);
-		return {
-			...state,
-			restaurants: action.payload,
-			chosenRestaurant: action.payload
+			return {
+			   ...state,
+			   restaurants: action.payload,
+			   chosenRestaurant: action.payload
 		}
 		default:
-		return state;
+			return state;
 	}
 }
 const userReducer = (state={loggedIn: false, currentUser: null, loading:false,  location: {}}, action) => {
 	switch (action.type) {
-	  case "LOG_IN":
-		return {
-		  ...state,
-		  loggedIn: true,
-		  currentUser: action.payload
-		};
-	  case "LOG_OUT":
-		return {
-		  ...state,
-		  loggedIn: false,
-		  currentUser: null
+	    case "LOG_IN":
+			return {
+				...state,
+				loggedIn: true,
+				currentUser: action.payload
+			};
+		case "LOG_OUT":
+		    return {
+		        ...state,
+		        loggedIn: false,
+		        currentUser: null
 		};
 		
 		case "USER_LOADING":
-		return {
-			...state,
-			loading: true
+			return {
+			    ...state,
+			    loading: true
 		}
 		case "USER_LOAD":
-		return {
-			...state,
-			currentUser: action.payload,
-			loading: false
+			return {
+				...state,
+			    currentUser: action.payload,
+			    loading: false
 		};
 		case "GET_GEOLOCATION": {
 			return {
@@ -60,25 +58,35 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading:false,  
 				}
 			}
 		}
+		case "GET_NEW_GEOLOCATION": {
+			console.log(action.payload);
+				return {
+					...state,
+					location: {
+						latitude: action.payload.coords.location.latitude,
+						longitude: action.payload.coords.location.longitude,
+					}
+				}
+			}
+
 		case "FAV_LOADING":
-      return {
-        ...state,
-        loading: true
-	  }
-	  case "FAV_LOAD":
-	// const copyRestaurants = state.currentUser
-	return {
-		...state,
-		currentUser: {
-			...state.currentUser,
-			favorites: action.payload
-		},
-		loading: false
-	}
-	default:
-		return state;
-	}
-}
+			return {
+				...state,
+				loading: true
+			}
+		case "FAV_LOAD":
+			return {
+				...state,
+				currentUser: {
+					...state.currentUser,
+					favorites: action.payload
+				},
+				loading: false
+			}
+			default:
+				return state;
+			}
+		}
 
 const rootReducer = combineReducers({
 	user: userReducer,

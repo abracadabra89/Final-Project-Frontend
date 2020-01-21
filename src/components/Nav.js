@@ -23,7 +23,7 @@ class Nav extends Component {
 	  handleSubmit = (e) => {
 		e.preventDefault()
 		const input = document.querySelector("#search")
-		this.props.searchRest(this.state.term)
+		this.props.searchRest(this.state.term, this.props.location)
 		input.value = ''
 	  }
 
@@ -85,7 +85,8 @@ class Nav extends Component {
 	}
 	function mapStateToProps(state) {
 		return {
-		  loggedIn: state.user.loggedIn
+		  loggedIn: state.user.loggedIn,
+		  location: state.user.location
 		}
 	  }
 	  export default withRouter(connect(mapStateToProps, { logOut, searchRest })(Nav));
