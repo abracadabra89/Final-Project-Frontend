@@ -36,16 +36,18 @@ const style = {
 	  });
   
 	render() {
-	 const location = this.props.location
+	 // const {latitude, longitude} = this.props.location
+	 console.log(this.props);
 	  return (
 		<div>
-        {!location ? (<div>Loading...</div>
+        {!this.props.location ? (<div>Loading...</div>
         ) : (
           <Map google={this.props.google}
             style={style}
             initialCenter={{
-              lat: 40.7007739,
-              lng: -73.9877738
+              lat: this.props.location.latitude,
+              lng: this.props.location.longitude
+
             }}
             zoom={12}
             onClick={this.onMapClicked}>
@@ -74,7 +76,7 @@ const style = {
   
   const mapStateToProps = state => ({
   restaurants: state.restaurants.restaurants,
-  user: state.currentLocation
+  location: state.user.location
 });
   
 export default connect(mapStateToProps, { getGeolocation })(GoogleApiWrapper({

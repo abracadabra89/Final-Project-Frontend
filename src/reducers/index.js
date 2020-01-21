@@ -24,7 +24,7 @@ const restaurantsReducer = (state = { restaurants: [], chosenRestaurant: null, l
 		return state;
 	}
 }
-const userReducer = (state={loggedIn: false, currentUser: null, loading:false,  currentLocation: {}}, action) => {
+const userReducer = (state={loggedIn: false, currentUser: null, loading:false,  location: {}}, action) => {
 	switch (action.type) {
 	  case "LOG_IN":
 		return {

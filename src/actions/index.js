@@ -37,6 +37,7 @@ export function fetchInitialRestaurants() {
 		return { type: "DELETE_RESTAURANT" }
 	  }
 	  export const getGeolocation = () => {
+		  let action = {}
 
 		const defaultLocation = {
 				coords: {
@@ -44,30 +45,21 @@ export function fetchInitialRestaurants() {
 				  longitude: -73.9877738
 				}
 			};
-	
-		const geolocation = navigator.geolocation;
-	
-		const location = new Promise((resolve, reject) => {
-			if (!geolocation) {
-				reject(new Error('Not Supported'));
+			const geolocation = navigator.geolocation;
+			const location = geolocation.getCurrentPosition(position => position)
+			if (!location) {
+				action = {
+					type: 'GET_GEOLOCATION',
+					payload: defaultLocation
+				}
+			} else {
+				action = {
+				type: "GET_GEOLOCATION",
+				payload: location
 			}
-	
-		geolocation.getCurrentPosition((position) => {
-			resolve(position);
-		}, () => {
-			reject (new Error('Permission denied'));
-		});
-	  });
-	
-	  if (!location) {
-		return dispatch => dispatch({type: "GET_GEOLOCATION",
-		payload: defaultLocation})
-	  } else {
-		  return dispatch => dispatch({
-			type: "GET_GEOLOCATION",
-			payload: location
-		  })
 		}
-	  }
+		return dispatch => {dispatch(action)};
+	}
+ 
 		
 
