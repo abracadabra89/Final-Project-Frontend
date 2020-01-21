@@ -51,7 +51,7 @@ class Nav extends Component {
 				<div className="right menu">
 				  <div className=" fluid item">
 					<div className="ui transparent icon input">
-					<input type="text" placeholder="Search " onChange={this.handleChange} name="term"></input>
+					<input id="search" type="text" placeholder="Search " onChange={this.handleChange} name="term"></input>
 					  <i className="search link icon" onClick={this.handleSubmit}></i>
 					</div>
 				  </div>

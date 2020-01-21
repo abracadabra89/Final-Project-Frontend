@@ -1,13 +1,13 @@
 import React from "react";
 import AllRestaurants from "./AllRestaurants";
 import ShowRestaurants from "../components/ShowRestaurants";
-import { fetchInitialRestaurants, postFavRestaurant } from "../actions";
+import { fetchInitialRestaurants, postFavRestaurant, searchRest } from "../actions";
 import { connect } from "react-redux";
 import MapContainer from "../components/MapContainer";
 
 class RestaurantsContainer extends React.Component {
   componentDidMount() {
-    this.props.fetchInitialRestaurants()
+    this.props.searchRest()
   }
 
   handleFavClick = (id) => {
@@ -51,4 +51,4 @@ const mapStateToProps = state => ({
   // state.restaurants.find(r => r.id === state.chosenRestaurant)
 });
 
-export default connect(mapStateToProps, { fetchInitialRestaurants, postFavRestaurant  })(RestaurantsContainer);
+export default connect(mapStateToProps, { fetchInitialRestaurants, postFavRestaurant, searchRest  })(RestaurantsContainer);
