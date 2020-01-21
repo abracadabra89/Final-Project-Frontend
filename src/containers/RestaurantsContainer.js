@@ -7,7 +7,7 @@ import MapContainer from "../components/MapContainer";
 
 class RestaurantsContainer extends React.Component {
   componentDidMount() {
-    this.props.searchRest()
+    this.props.searchRest('items')
   }
 
   handleFavClick = (id) => {

@@ -4,7 +4,8 @@ export function fetchInitialRestaurants() {
 	
 		return dispatch => {
 			dispatch({ type: "RESTAURANTS_LOADING" });
-			RestfulAdapter.indexFetch("restaurants").then(data => {
+			let body = {term: 'Items'}
+			RestfulAdapter.createFetch("searches", body).then(data => {
 			  dispatch({ type: "RESTAURANTS_LOAD", payload: data });
 			});
 		  };
