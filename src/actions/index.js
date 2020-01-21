@@ -20,6 +20,16 @@ export function fetchInitialRestaurants() {
 			}
 		  }
 
+		export function searchRest(term){
+			return dispatch => {
+				dispatch({ type: "RESTAURANTS_LOADING" });
+				const body = {term: term}
+				RestfulAdapter.createFetch("searches", body).then(data => {
+					dispatch({ type: "RESTAURANTS_LOAD", payload: data})
+				});
+			}
+		}
+
 
 	export function chooseRestaurant(restaurant) {
 		return { type: "CHOOSE_RESTAURANT", payload: restaurant };

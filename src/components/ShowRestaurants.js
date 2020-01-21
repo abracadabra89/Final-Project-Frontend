@@ -3,7 +3,10 @@ import { Button } from 'semantic-ui-react'
 import { connect } from "react-redux";
 import { deleteRestaurant } from "../actions";
 
-
+const style = {
+	'position': 'fixed'
+  }
+  
 class ShowRestaurants extends React.Component {
 	constructor(){
 		super()
@@ -11,11 +14,11 @@ class ShowRestaurants extends React.Component {
 			active:false
 		}
 	}
-	
+
 	render(){
 		const { id, image_url, name, address, items } = this.props.chosenRestaurant
     return (
-		<div className="ui container segment">
+		<div className="ui container segment" style = {style}>
         <div className="ui small centered image">
           <img src={image_url} styles={{maxHeight: '10px'}} alt=""></img>
         </div>

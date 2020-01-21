@@ -1,14 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { withRouter, NavLink } from 'react-router-dom'
-import { logOut } from "../actions";
+import { logOut, searchRest } from "../actions";
+
 
 class Nav extends Component {
+
+	state = {
+		term: ""
+	  }
+
 	handleLogout = () => {
 	  this.props.logOut();
 	  localStorage.clear();
 	  this.props.history.push("/")
 	}
+
+	handleChange = (e) => {
+		this.setState({ term: e.target.value})
+	  }
+	
+	  handleSubmit = (e) => {
+		e.preventDefault()
+		this.props.searchRest(this.state.term)
+	  }
+
 	render(){
 		//console.log(this.props)
 		return (
@@ -35,7 +51,7 @@ class Nav extends Component {
 				<div className="right menu">
 				  <div className=" fluid item">
 					<div className="ui transparent icon input">
-					  <input id="search" type="search" placeholder="Search Restaurants..." onChange={this.handleChange} name="term"></input>
+					<input type="text" placeholder="Search " onChange={this.handleChange} name="term"></input>
 					  <i className="search link icon" onClick={this.handleSubmit}></i>
 					</div>
 				  </div>
@@ -70,5 +86,5 @@ class Nav extends Component {
 		  loggedIn: state.user.loggedIn
 		}
 	  }
-	  export default withRouter(connect(mapStateToProps, { logOut })(Nav));
+	  export default withRouter(connect(mapStateToProps, { logOut, searchRest })(Nav));
 	
