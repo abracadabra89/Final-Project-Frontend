@@ -38,8 +38,8 @@ export class MapContainer extends React.Component {
   };
 
   handleMouseClick = (props, marker, e) => {
-    console.log(marker);
-    console.log("state marker", this.state.activeMarker);
+    //console.log(marker);
+    //console.log("state marker", this.state.activeMarker);
     if (this.state.activeMarker.name !== marker.name) {
       this.setState({
         chosenPlace: props,
@@ -48,6 +48,15 @@ export class MapContainer extends React.Component {
       });
     }
   };
+
+  openedInfoWindow = () => {
+	const title = document.getElementById('title')
+	title.addEventListener('click', (e) =>{
+		const selected = this.props.restaurants.filter(restaurant => restaurant.name === e.target.innerHTML)
+		this.props.chosenPlace(selected)
+		this.setState({infoWindow: false})
+	})
+  }
 
   mapClicked = (mapProps, map, clickEvent) => {
     const thisLatidude = clickEvent.latLng.lat();

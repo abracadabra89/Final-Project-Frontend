@@ -7,7 +7,7 @@ const RestaurantList = props => {
   return (
     <div
       onClick={() => {
-        props.selectRestaurant(restaurant);
+        props.chooseRestaurant(restaurant);
       }}
     >
       <p>{restaurant.name}</p>
