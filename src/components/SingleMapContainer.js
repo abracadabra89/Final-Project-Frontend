@@ -11,9 +11,9 @@ const style = {
 
 export class SingleMapContainer extends React.Component {
   state = {
-    showingInfoWindow: false,
+    infoWindow: false,
     activeMarker: {},
-    selectedPlace: {}
+    chosenPlace: {}
   };
 
   mapClicked = (mapProps, map, clickEvent) => {
@@ -23,9 +23,9 @@ export class SingleMapContainer extends React.Component {
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
-      selectedPlace: props,
+      chosenPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      infoWindow: true
     });
 
   render() {
@@ -55,10 +55,10 @@ export class SingleMapContainer extends React.Component {
           : null}
         <InfoWindow
           marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
+          visible={this.state.infoWindow}
         >
           <div>
-            <h1>{this.state.selectedPlace.name}</h1>
+            <h1>{this.state.chosenPlace.name}</h1>
           </div>
         </InfoWindow>
       </Map>
