@@ -20,6 +20,14 @@ export function postFavRestaurant(id) {
   };
 }
 
+export function deleteFavRestaurant(id) {
+  return dispatch => {
+    RestfulAdapter.deleteFetch("favorites", id).then(data => {
+      dispatch({ type: "DELETE_FAV", payload: data });
+    });
+  };
+}
+
 export function searchRest(term, latitude, longitude) {
   return dispatch => {
     dispatch({ type: "RESTAURANTS_LOADING" });
