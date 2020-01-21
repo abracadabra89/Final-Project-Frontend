@@ -60,12 +60,25 @@ const userReducer = (state={loggedIn: false, currentUser: null, loading:false,  
 				}
 			}
 		}
-
-		default:
-			return state;
-		}
-  
-  }
+		case "FAV_LOADING":
+      return {
+        ...state,
+        loading: true
+	  }
+	  case "FAV_LOAD":
+	// const copyRestaurants = state.currentUser
+	return {
+		...state,
+		currentUser: {
+			...state.currentUser,
+			favorites: action.payload
+		},
+		loading: false
+	}
+	default:
+		return state;
+	}
+}
 
 const rootReducer = combineReducers({
 	user: userReducer,

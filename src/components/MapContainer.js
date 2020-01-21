@@ -42,23 +42,25 @@ const style = {
 		<div>
         {!this.props.location ? (<div>Loading...</div>
         ) : (
-          <Map google={this.props.google}
-            style={style}
-            initialCenter={{
-              lat: this.props.location.latitude,
-              lng: this.props.location.longitude
+			<Map google={this.props.google}
+			style={style}
+			initialCenter={{
+				lat: this.props.location.latitude,
+				lng: this.props.location.longitude
+			}}
+			zoom={12}
+			onClick={this.onMapClicked}>
+			{this.props.restaurants ? 
+				(this.props.restaurants.map(rest => {
+					return <Marker key={rest.id}
+					onClick={this.onMarkerClick}
+					name={rest.name}
+					position={{lat: rest.latitude, lng: rest.longitude}}
+					/>
+					})
+					) : (null)}
 
-            }}
-            zoom={12}
-            onClick={this.onMapClicked}>
-			{this.props.restaurants ? (this.props.restaurants.map(rest => {
-              return <Marker key={rest.id}
-                onClick={this.onMarkerClick}
-                name={rest.name}
-                position={{lat: rest.latitude, lng: rest.longitude}}
-              />
-            })
-          ) : (null)}
+
 		  <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
