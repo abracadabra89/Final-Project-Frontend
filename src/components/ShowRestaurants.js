@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { deleteRestaurant } from "../actions";
 
 const style = {
-	'position': 'fixed'
+	'position': 'fixed',
+	'width': '40%'
   }
   
 class ShowRestaurants extends React.Component {
@@ -17,20 +18,23 @@ class ShowRestaurants extends React.Component {
 
 	render(){
 		const { id, image_url, name, address, items } = this.props.chosenRestaurant
-    return (
+		return (
 		<div className="ui container segment" style = {style}>
-        <div className="ui small centered image">
-          <img src={image_url} styles={{maxHeight: '10px'}} alt=""></img>
-        </div>
-        <h1>{name}</h1>
-        <h3>{address}</h3>
-		<li>{items}</li>
-        <div className="ui four column doubling stackable grid container">
+		<div className="column"></div>
+		<Button floated="right" circular icon="close" onClick={() => this.props.clearRestaurant()}/>
+		<Button floated="right" inverted color='yellow' icon="star outline" onClick={() => this.props.addFavorite(id)}></Button>
+		<div className="ui small centered image">
+		<img src={image_url} styles={{maxHeight: '10px'}} alt=""></img>
+		</div>
+		<h1>{name}</h1>
+		<h3>{address}</h3>
+		<h3>{items}</h3>
+		<div className="ui four column doubling stackable grid container">
 		<Button icon="star outline" onClick={() => this.props.addFavorite(id)}/>     
-			<Button circular icon="close" onClick={() => this.props.deleteRestaurant()}/>
-			</div>
-     	 </div>
-    	);
+		<Button circular icon="close" onClick={() => this.props.deleteRestaurant()}/>
+		</div>
+		</div>
+		);
 	}
 }
 export default connect(null, { deleteRestaurant }) (ShowRestaurants);

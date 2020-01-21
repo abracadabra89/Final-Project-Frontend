@@ -17,9 +17,9 @@ const style = {
 	  selectedPlace: {},
 	};
 		
-		componentDidMount() {
-			this.props.getGeolocation();
-	  }
+	// 	componentDidMount() {
+	// 		this.props.getGeolocation();
+	//   }
 
 
   

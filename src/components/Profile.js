@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import SingleMapContainer from './SingleMapContainer'
-import { Icon, List } from 'semantic-ui-react'
 
 
 class Profile extends Component {
