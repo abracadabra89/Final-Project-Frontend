@@ -11,89 +11,115 @@ const style = {
 };
 
 export class MapContainer extends React.Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
+         constructor() {
+           super();
+           this.state = {
+             showingInfoWindow: false,
+             activeMarker: {},
+             selectedPlace: {}
+           };
+         }
+         shouldComponentUpdate(nextProps, nextState) {
+           if (
+             this.state.activeMarker === nextState.activeMarker &&
+             this.props === nextProps
+           ) {
+             return false;
+           }
+           return true;
+		 }
+		 
+         onMouseMarker = (props, marker, e) => {
+           this.setState({
+             selectedPlace: props,
+             activeMarker: marker,
+             showingInfoWindow: true
+           });
+		 };
 
-  // 	componentDidMount() {
-  // 		this.props.getGeolocation();
-  //   }
+		 handleMouseClick = (props, marker, e) => {
+			 console.log(marker);
+			 console.log('state marker', this.state.activeMarker);
+			 if (this.state.activeMarker.name !== marker.name) {
+				 this.setState({
+					 selectedPlace: props,
+					 activeMarker: marker,
+					 showingInfoWindow: true
+          })
+	  }
+	}
 
-  mapClicked = (mapProps, map, clickEvent) => {
-    const thisLatidude = clickEvent.latLng.lat();
-    const thisLongitude = clickEvent.latLng.lng();
-    const chosenLocation = {
-      latitude: thisLatidude,
-      longitude: thisLongitude
-    };
-    this.props.thisLocation(chosenLocation);
-    this.props.searchRest("Items", thisLatidude, thisLongitude);
-  };
+         mapClicked = (mapProps, map, clickEvent) => {
+           const thisLatidude = clickEvent.latLng.lat();
+           const thisLongitude = clickEvent.latLng.lng();
+           const chosenLocation = {
+             latitude: thisLatidude,
+             longitude: thisLongitude
+           };
+           this.props.thisLocation(chosenLocation);
+           this.props.searchRest("Items", thisLatidude, thisLongitude);
+         };
 
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-  render() {
-    const asset = {
-      url:
-        "https://icons-for-free.com/iconfiles/png/512/location-131965017472890605.png",
-      scaledSize: new this.props.google.maps.Size(25, 40)
-    };
-    return (
-      <div>
-        {!this.props.location ? (
-          <div>Loading...</div>
-        ) : (
-          <Map
-            google={this.props.google}
-            style={style}
-            initialCenter={{
-              lat: this.props.location.latitude,
-              lng: this.props.location.longitude
-            }}
-            zoom={12}
-            onClick={this.onMapClicked}
-          >
-            {this.props.restaurants
-              ? this.props.restaurants.map(rest => {
-                  return (
-                    <Marker
-                      key={rest.id}
-                      onClick={this.onMarkerClick}
-                      name={rest.name}
-                      position={{ lat: rest.latitude, lng: rest.longitude }}
-                    />
-                  );
-                })
-              : null}
-            <Marker
-              asset={asset}
-              name={"This Location"}
-              position={{
-                lat: this.props.location.latitude,
-                lng: this.props.location.longitude
-              }}
-            />
-            <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-            >
-              <div>
-                <h1>{this.state.selectedPlace.name}</h1>
-              </div>
-            </InfoWindow>
-          </Map>
-        )}
-      </div>
-    );
-  }
-}
+         render() {
+           const asset = {
+             url:
+               "https://icons-for-free.com/iconfiles/png/512/location-131965017472890605.png",
+             scaledSize: new this.props.google.maps.Size(25, 40)
+           };
+           return (
+             <div>
+               {!this.props.location ? (
+                 <div>Loading...</div>
+               ) : (
+                 <Map
+                   google={this.props.google}
+                   style={style}
+                   initialCenter={{
+                     lat: this.props.location.latitude,
+                     lng: this.props.location.longitude
+                   }}
+                   zoom={12}
+                   onClick={this.onMapClicked}
+                 >
+                   {this.props.restaurants
+                     ? this.props.restaurants.map(restaurant => {
+                         return (
+                           <Marker
+                             key={restaurant.id}
+                             onMouseMarker={this.handleMouseClick}
+                             name={restaurant.name}
+                             position={{
+                               lat: restaurant.latitude,
+                               lng: restaurant.longitude
+                             }}
+                           />
+                         );
+                       })
+                     : null}
+                   <Marker
+                     id="current"
+                     asset={asset}
+                     name={"This Location"}
+                     position={{
+                       lat: this.props.location.latitude,
+                       lng: this.props.location.longitude
+                     }}
+                   />
+                   <InfoWindow
+                     marker={this.state.activeMarker}
+                     visible={this.state.showingInfoWindow}
+                   >
+                     <div>
+                       <h1>{this.state.selectedPlace.name}</h1>
+                     </div>
+                   </InfoWindow>
+                 </Map>
+               )}
+             </div>
+           );
+         }
+	   }
+	
 
 const mapStateToProps = state => ({
   restaurants: state.restaurants.restaurants,
