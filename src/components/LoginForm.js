@@ -22,7 +22,7 @@ class LoginForm extends Component {
     e.preventDefault();
     const body = this.state.input
 
-    this.props.postLogin(body)
+    this.props.afterLogin(body)
     .then(user => this.props.handleLogin(user))
     .catch(error => console.log(this.props.history.push("/")))
     this.setState({
@@ -36,28 +36,41 @@ class LoginForm extends Component {
   render() {
     const { input } = this.state;
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="ui field">
-            <label>Email: </label>
-            <input
-              name="email"
-              value={input.email}
-              onChange={this.handleChange}
-            />
+      <div className="ui segment center landing masthead">
+        <div className="ui text container">
+          <h1 className="ui inverted header">Leftovers</h1>
+          <h2 className="ui inverted header">Save wasted food!</h2>
+        </div>
+        <form onSubmit={this.handleSubmit} className="ui large form">
+          <div className="ui stacked segment">
+            <div className="input">
+              <div className="ui left icon input">
+                <i className="user icon"></i>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Email address"
+                  value={input.email}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <div className="input">
+              <div className="ui left icon input">
+                <i className="lock icon"></i>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={input.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <button type="submit" className="ui fluid inverted green button">
+              Login
+            </button>
           </div>
-          <div className="ui field">
-            <label>Password: </label>
-            <input
-              name="password"
-              type="password"
-              value={input.password}
-              onChange={this.handleChange}
-            />
-          </div>
-          <button type="submit" className="ui basic green button">
-            Log-in
-          </button>
           <Link to="/signup">Register here</Link>
         </form>
       </div>

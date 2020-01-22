@@ -48,7 +48,7 @@ export function afterLogin(body) {
   return dispatch => {
     dispatch({ type: "USER_LOADING" });
     const newMessage = RestfulAdapter.createFetch("api/v1/login", body);
-    dispatch({ type: "USER_DONE" });
+    dispatch({ type: "USER_LOADED" });
     return newMessage;
   };
 }

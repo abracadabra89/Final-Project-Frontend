@@ -77,11 +77,11 @@ class Nav extends Component {
             >
               Leftovers
             </NavLink>
-            <div className="ui top attached tabulat menu">
+            {/* <div className="ui top attached tabulat menu">
                 <NavLink to="/" exact className="link item" id='site-name'>
                   Log In
                 </NavLink>
-            </div>
+            </div> */}
           </div>
         )}
       </div>

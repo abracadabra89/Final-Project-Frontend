@@ -10,10 +10,10 @@ import { connect } from "react-redux";
 import MapContainer from "../components/MapContainer";
 
 class RestaurantsContainer extends React.Component {
-  // componentDidMount() {
-  //   this.props.getGeolocation();
-  //   //this.props.fetchInitialRestaurants(this.props.location);
-  // }
+  componentDidMount() {
+    this.props.getGeolocation();
+    //this.props.fetchInitialRestaurants(this.props.location);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
@@ -26,7 +26,7 @@ class RestaurantsContainer extends React.Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.props.location);
     // console.log(this.props.restaurants.chosenRestaurant);
     return (
       <div className="ui grid">
