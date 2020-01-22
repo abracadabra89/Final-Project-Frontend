@@ -1,40 +1,40 @@
 import React, { Component } from "react";
 import image from "../leftovers-cover.jpg";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { afterLogin } from "../actions";
 
 
 class LoginForm extends Component {
   state = {
-    fields: {
+    input: {
       email: "",
       password: ""
     }
   };
 
   handleChange = e => {
-    const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
-    this.setState({ fields: newFields });
+    const newInput = { ...this.state.input, [e.target.name]: e.target.value };
+    this.setState({ input: newInput });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify(this.state.fields)
-    };
-    fetch("http://localhost:3000/api/v1/login", options)
-      .then(resp => resp.json())
-      .then(user => {
-        this.props.handleLogin(user);
-      });
-  };
+    const body = this.state.input
+
+    this.props.postLogin(body)
+    .then(user => this.props.handleLogin(user))
+    .catch(error => console.log(this.props.history.push("/")))
+    this.setState({
+      input: {
+        email: '',
+        password: ''
+      }
+    })
+  }
 
   render() {
-    //console.log('isLoggedIn?', this.props.loggedIn === true);
-    const { fields } = this.state;
+    const { input } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -42,7 +42,7 @@ class LoginForm extends Component {
             <label>Email: </label>
             <input
               name="email"
-              value={fields.email}
+              value={input.email}
               onChange={this.handleChange}
             />
           </div>
@@ -51,16 +51,17 @@ class LoginForm extends Component {
             <input
               name="password"
               type="password"
-              value={fields.password}
+              value={input.password}
               onChange={this.handleChange}
             />
           </div>
           <button type="submit" className="ui basic green button">
-            Login
+            Log-in
           </button>
+          <Link to="/signup">Register here</Link>
         </form>
       </div>
     );
   }
 }
-export default LoginForm;
+export default connect(null, { afterLogin })(LoginForm);

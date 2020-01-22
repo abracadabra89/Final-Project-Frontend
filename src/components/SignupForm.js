@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { logIn } from "../actions";
+import { logIn, createUser } from "../actions";
+import { connect } from "react-redux";
 
 class SignupForm extends Component {
   state = {
@@ -8,6 +9,18 @@ class SignupForm extends Component {
       email: "",
       password: ""
     }
+  };
+
+  handleChange = e => {
+    const newInput = { ...this.state.input, [e.target.name]: e.target.value };
+    this.setState({ input: newInput });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const body = this.state.input;
+
+    this.props.createUser(body).then(this.props.history.push("/"));
   };
 
   render() {
@@ -50,4 +63,4 @@ class SignupForm extends Component {
   }
 }
 
-export default connect(null, { logIn })(SignupForm);
+export default connect(null, { logIn, createUser })(SignupForm);

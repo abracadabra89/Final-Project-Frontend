@@ -9,8 +9,8 @@ export function fetchInitialRestaurants(location) {
       longitude: location.longitude
     };
     RestfulAdapter.createFetch("searches", body).then(data => {
-	  dispatch({ type: "RESTAURANTS_LOAD", payload: data });
-	  dispatch({ type: "USER_LOADED" });
+      dispatch({ type: "RESTAURANTS_LOAD", payload: data });
+      dispatch({ type: "USER_LOADED" });
     });
   };
 }
@@ -30,6 +30,26 @@ export function deleteFavRestaurant(id) {
     RestfulAdapter.deleteFetch("favorites", id).then(data => {
       dispatch({ type: "FAV_LOADING", payload: data });
     });
+  };
+}
+
+export function createUser(body) {
+  return dispatch => {
+    dispatch({ type: "USER_LOADING" });
+    const newMessage = RestfulAdapter.createFetch("users", body).then(obj =>
+      alert(obj.msg)
+    );
+    dispatch({ type: "USER_LOADED" });
+    return newMessage;
+  };
+}
+
+export function afterLogin(body) {
+  return dispatch => {
+    dispatch({ type: "USER_LOADING" });
+    const newMessage = RestfulAdapter.createFetch("api/v1/login", body);
+    dispatch({ type: "USER_DONE" });
+    return newMessage;
   };
 }
 
@@ -68,7 +88,7 @@ export const getNewLocation = location => {
 
 export const getGeolocation = () => {
   return dispatch => {
-	  dispatch({ type: "GEOLOCATION_LOADING" });
+    dispatch({ type: "GEOLOCATION_LOADING" });
     const geolocation = navigator.geolocation;
     const location = new Promise((resolve, reject) => {
       if (!geolocation) {

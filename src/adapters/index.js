@@ -24,6 +24,8 @@ export class RestfulAdapter {
     return fetch(`${API}/${route}/${id}`, getRequest()).then(responseHandler);
   }
   static createFetch(route, body) {
+    console.log(route);
+    console.log(body);
     return fetch(`${API}/${route}`, postRequest(body)).then(responseHandler);
   }
   static editFetch(route, id, body) {

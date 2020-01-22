@@ -78,11 +78,9 @@ class Nav extends Component {
               Leftovers
             </NavLink>
             <div className="ui top attached tabulat menu">
-              <a className="item">
-                <NavLink to="/" exact className="link item">
+                <NavLink to="/" exact className="link item" id='site-name'>
                   Log In
                 </NavLink>
-              </a>
             </div>
           </div>
         )}

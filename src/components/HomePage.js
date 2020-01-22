@@ -50,6 +50,7 @@ class HomePage extends Component {
         ) : (
           <div>
             <LoginForm
+              history={this.props.history}
               handleLogin={this.handleLogin}
               handleLogout={this.handleLogout}
               loggedIn={this.props.loggedIn}
