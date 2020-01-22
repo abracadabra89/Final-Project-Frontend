@@ -50,13 +50,15 @@ export class MapContainer extends React.Component {
   };
 
   openedInfoWindow = () => {
-	const title = document.getElementById('title')
-	title.addEventListener('click', (e) =>{
-		const selected = this.props.restaurants.filter(restaurant => restaurant.name === e.target.innerHTML)
-		this.props.chosenPlace(selected)
-		this.setState({infoWindow: false})
-	})
-  }
+    const title = document.getElementById("title");
+    title.addEventListener("click", e => {
+      const selected = this.props.restaurants.filter(
+        restaurant => restaurant.name === e.target.innerHTML
+      );
+      this.props.chosenPlace(selected);
+      this.setState({ infoWindow: false });
+    });
+  };
 
   mapClicked = (mapProps, map, clickEvent) => {
     const thisLatidude = clickEvent.latLng.lat();
@@ -78,8 +80,15 @@ export class MapContainer extends React.Component {
     };
     return (
       <div>
-        {!this.props.location ? (
-          <div>Loading...</div>
+        {!this.props.loading ? (
+          <div className="ui segment">
+            <div className="ui active inverted dimmer">
+              <div className="ui mini text loader">Loading</div>
+            </div>
+            <br></br>
+            <br></br>
+            <br></br>
+          </div>
         ) : (
           <Map
             google={this.props.google}
@@ -132,7 +141,7 @@ export class MapContainer extends React.Component {
 
 const mapStateToProps = state => ({
   restaurants: state.restaurants.restaurants,
-  location: state.user.location
+  loading: state.user.loading
 });
 
 export default connect(mapStateToProps, { getNewLocation, searchRest })(

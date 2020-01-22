@@ -59,6 +59,18 @@ const userReducer = (
         currentUser: action.payload,
         loading: false
       };
+
+      case "USER_LOADED":
+      return {
+        ...state,
+        loading: false
+      };
+    case "GEOLOCATION_LOADING":
+      return {
+        ...state,
+        loading: true
+      }
+
     case "GET_GEOLOCATION": {
       return {
         ...state,

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "./LoginForm";
 import { connect } from "react-redux";
-import { logIn, logOut } from "../actions";
+import { logIn, logOut, getGeolocation } from "../actions";
 import RestaurantsContainer from "../containers/RestaurantsContainer";
 
 class HomePage extends Component {
@@ -27,6 +27,7 @@ class HomePage extends Component {
           this.handleLogin(user);
         });
     }
+    this.props.getGeolocation();
   }
   handleLogin = user => {
     const token = localStorage.getItem("token");
@@ -66,4 +67,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { logIn, logOut })(HomePage);
+export default connect(mapStateToProps, { logIn, logOut, getGeolocation })(
+  HomePage
+);

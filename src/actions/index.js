@@ -9,7 +9,8 @@ export function fetchInitialRestaurants(location) {
       longitude: location.longitude
     };
     RestfulAdapter.createFetch("searches", body).then(data => {
-      dispatch({ type: "RESTAURANTS_LOAD", payload: data });
+	  dispatch({ type: "RESTAURANTS_LOAD", payload: data });
+	  dispatch({ type: "USER_LOADED" });
     });
   };
 }
@@ -67,7 +68,7 @@ export const getNewLocation = location => {
 
 export const getGeolocation = () => {
   return dispatch => {
-	  dispatch({ type: "LOCATION_LOADING" });
+	  dispatch({ type: "GEOLOCATION_LOADING" });
     const geolocation = navigator.geolocation;
     const location = new Promise((resolve, reject) => {
       if (!geolocation) {
