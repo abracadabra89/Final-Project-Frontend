@@ -60,9 +60,9 @@ class Nav extends Component {
                   ></i>
                 </div>
               </div>
-                <button className="item" onClick={this.handleLogout}>
-                  Logout
-                </button>
+              <button className="item" onClick={this.handleLogout}>
+                Logout
+              </button>
             </div>
           </div>
         ) : (
@@ -75,10 +75,12 @@ class Nav extends Component {
             >
               Leftovers
             </NavLink>
-            <div className="right menu">
-              <NavLink to="/" exact className="link item">
-                Log In
-              </NavLink>
+            <div className="ui top attached tabulat menu">
+              <a className="item">
+                <NavLink to="/" exact className="link item">
+                  Log In
+                </NavLink>
+              </a>
             </div>
           </div>
         )}

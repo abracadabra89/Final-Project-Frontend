@@ -1,38 +1,96 @@
-.App {
+.landing {
+  background: #e5e2aa url("./leftovers-cover.jpg") 80% 30% !important;
+}
+
+.landing.segment {
+  min-height: 900px;
+}
+
+.landing h1,
+h2 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.landing h1 {
+  font-family: 'Helvetica', cursive !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ui.menu>.item:first-child {
+  font-family: 'Helvetica', cursive !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.masthead h1.ui.header {
+  margin-top: 3em;
+  margin-bottom: 0em;
+  font-size: 4.5em;
+  font-weight: normal
+}
+
+.masthead h2 {
+  font-size: 1.8em;
+  font-weight: normal;
+}
+
+
+.ui.header {
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+#home form a {
+  width: 100%;
+  text-align: center;
+  display: block;
+  transition: color 140ms;
+}
+
+#home form a:link {
+  color: rgb(172, 186, 199);
+}
+
+#home form {
+  margin: 1.1rem auto;
+  display: block;
+  padding: 1rem;
+  max-width: 350px;
+  box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.2);
+  background: #f8e2e2;
+  font-size: 1.25rem;
+}
+
+
+#nav {
+  background: #111;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: flex-end;
+  padding: 0 1rem;
+  margin: 0;
+}
+
+#nav .nav-link {
+  text-decoration: none;
+  width: 100px;
+  padding: 12px;
+  background: #111;
   color: white;
+  text-align: center;
+  width: auto;
+  transition: background 150ms;
 }
 
-.App-link {
-  color: #61dafb;
+#nav .nav-link:visited {
+  background: #111;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#nav .nav-link:hover {
+  background: rgb(95, 86, 86);
+}
+
+#nav .nav-link:active {
+  background: rgb(216, 204, 204);
+}
+
+#nav #site-name {
+  margin-right: auto;
 }

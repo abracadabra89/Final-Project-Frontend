@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import image from "../leftovers-cover.jpg";
+
 
 class LoginForm extends Component {
   state = {
