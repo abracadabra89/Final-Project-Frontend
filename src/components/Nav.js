@@ -38,9 +38,11 @@ class Nav extends Component {
             <NavLink to="/" exact className="link red item" id="site-name">
               Leftovers
             </NavLink>
+            <div className="ui menu">
             <NavLink to="/profile" exact className="link item">
               Profile
             </NavLink>
+            </div>
             <NavLink to="/" exact className="active item" id="site-name">
               Leftovers Search
             </NavLink>
@@ -60,9 +62,9 @@ class Nav extends Component {
                   ></i>
                 </div>
               </div>
-              <button className="item" onClick={this.handleLogout}>
+              <a className="item" onClick={this.handleLogout}>
                 Logout
-              </button>
+              </a>
             </div>
           </div>
         ) : (

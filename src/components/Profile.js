@@ -23,7 +23,9 @@ render() {
                     <List.Item key={restaurant.id}>
                       <List.Content>
                         <List.Header>
-                          {restaurant.name}{" "}
+                          <a target="_blank" href={`${restaurant.url}`}>
+                            {restaurant.name}{" "}
+                          </a>
                           <Button
                             circular
                             icon="close"
