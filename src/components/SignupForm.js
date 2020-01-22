@@ -4,9 +4,9 @@ import { logIn } from "../actions";
 class SignupForm extends Component {
   state = {
     input: {
-		name: "",
-		email: "",
-		password: ""
+      name: "",
+      email: "",
+      password: ""
     }
   };
 
@@ -51,4 +51,3 @@ class SignupForm extends Component {
 }
 
 export default connect(null, { logIn })(SignupForm);
-
