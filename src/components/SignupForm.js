@@ -19,22 +19,39 @@ class SignupForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const body = this.state.input;
-
-    this.props.createUser(body).then(this.props.history.push("/"));
+	this.props.createUser(body).
+	then(this.props.history.push("/"));
   };
 
   render() {
     const { input } = this.state;
     return (
-		 <div className="ui segment center landing masthead">
-      {/* <div className="ui middle aligned center aligned grid"> */}
+      <div className="ui segment center landing masthead">
         <div className="ui text container">
           <h1 className="ui inverted header">Sign Up</h1>
         </div>
         <form onSubmit={this.handleSubmit} className="ui large form">
           <div className="ui stacked segment">
-            <div className="input
-			">
+            <div
+              className="input
+			"
+            >
+              <div className="ui left icon input">
+                <i className="lock icon"></i>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={input.name}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+
+            <div
+              className="input
+			"
+            >
               <div className="ui left icon input">
                 <i className="user icon"></i>
                 <input
@@ -46,16 +63,17 @@ class SignupForm extends Component {
                 />
               </div>
             </div>
-            <div className="input
-			">
+            <div
+              className="input
+			"
+            >
               <div className="ui left icon input">
                 <i className="lock icon"></i>
                 <input
                   type="password"
                   name="password"
                   placeholder="Password"
-                  value={input
-				  .password}
+                  value={input.password}
                   onChange={this.handleChange}
                 />
               </div>
@@ -63,9 +81,9 @@ class SignupForm extends Component {
             <button type="submit" className="ui fluid inverted blue button">
               Sign Up
             </button>
-          </div> 
-		</form>
-		</div>
+          </div>
+        </form>
+      </div>
     );
   }
 }

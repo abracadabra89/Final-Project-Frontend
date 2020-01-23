@@ -15,6 +15,10 @@ class RestaurantsContainer extends React.Component {
     active: true
   };
 
+  handleNear = () => {
+    this.setState({ active: false });
+  };
+
   componentDidMount() {
     this.props.getGeolocation();
     //this.props.fetchInitialRestaurants(this.props.location);
@@ -39,7 +43,7 @@ class RestaurantsContainer extends React.Component {
     console.log(this.props.location);
     return (
       <div className="ui grid">
-        <Dimmer active={active} page>
+        <Dimmer active={active} onClickOutside={this.handdleNear} page>
           <Button negative size="big" onClick={this.handleSearch}>
             Find some leftovers!
           </Button>

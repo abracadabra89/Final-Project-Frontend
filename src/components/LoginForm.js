@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import image from "../leftovers-cover.jpg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { afterLogin } from "../actions";
@@ -49,7 +48,7 @@ class LoginForm extends Component {
                 <input
                   type="text"
                   name="email"
-                  placeholder="Email address"
+                  placeholder="Email"
                   value={input.email}
                   onChange={this.handleChange}
                 />
