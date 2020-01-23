@@ -7,9 +7,14 @@ import {
   getGeolocation
 } from "../actions";
 import { connect } from "react-redux";
+import { Dimmer, Button } from "semantic-ui-react";
 import MapContainer from "../components/MapContainer";
 
 class RestaurantsContainer extends React.Component {
+  state = {
+    active: true
+  };
+
   componentDidMount() {
     this.props.getGeolocation();
     //this.props.fetchInitialRestaurants(this.props.location);
@@ -24,12 +29,21 @@ class RestaurantsContainer extends React.Component {
   handleFavClick = id => {
     this.props.postFavRestaurant(id);
   };
+  handleSearch = e => {
+    this.props.getLocation();
+    this.setState({ active: false });
+  };
 
   render() {
+    const { active } = this.state;
     console.log(this.props.location);
-    // console.log(this.props.restaurants.chosenRestaurant);
     return (
       <div className="ui grid">
+        <Dimmer active={active} page>
+          <Button negative size="big" onClick={this.handleSearch}>
+            Find some leftovers!
+          </Button>
+        </Dimmer>
         <div className="six wide column">
           {this.props.restaurants !== null ? (
             <AllRestaurants restaurants={this.props.restaurants} />

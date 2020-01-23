@@ -1,7 +1,12 @@
 import React from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import { connect } from "react-redux";
-import { getNewLocation, getGeolocation, searchRest, chooseRestaurant } from "../actions";
+import {
+  getNewLocation,
+  getGeolocation,
+  searchRest,
+  chooseRestaurant
+} from "../actions";
 
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
@@ -19,6 +24,11 @@ export class MapContainer extends React.Component {
       chosenPlace: {}
     };
   }
+
+//   componentDidMount() {
+//     this.props.getGeolocation();
+//   }
+
   shouldComponentUpdate(nextProps, nextState) {
     if (
       this.state.activeMarker === nextState.activeMarker &&
@@ -50,12 +60,12 @@ export class MapContainer extends React.Component {
   };
 
   handleMouseRemove = e => {
-	  this.setState({
+    this.setState({
       chosenPlace: {},
       activeMarker: {},
       infoWindow: false
     });
-  }
+  };
 
   openedInfoWindow = () => {
     const title = document.getElementById("title");
@@ -88,7 +98,7 @@ export class MapContainer extends React.Component {
     };
     return (
       <div>
-        {this.props.location.latitude === undefined  ? (
+        {this.props.location.latitude === undefined ? (
           <div className="ui segment">
             <div className="ui active inverted dimmer">
               <div className="ui mini text loader">Loading</div>
@@ -101,15 +111,17 @@ export class MapContainer extends React.Component {
           <Map
             google={this.props.google}
             style={style}
-            initialCenter={{
+            center={{
               lat: this.props.location.latitude,
               lng: this.props.location.longitude
             }}
             zoom={12}
-            onClick={this.mapClicked}>
+            onClick={this.mapClicked}
+          >
             {this.props.restaurants
-              ? (this.props.restaurants.map(restaurant => {
-                  return <Marker
+              ? this.props.restaurants.map(restaurant => {
+                  return (
+                    <Marker
                       key={restaurant.id}
                       onMouseMarker={this.handleMouseClick}
                       name={restaurant.name}
@@ -118,8 +130,9 @@ export class MapContainer extends React.Component {
                         lng: restaurant.longitude
                       }}
                     />
-			  })
-			  ) : (null)}
+                  );
+                })
+              : null}
 
             <Marker
               id="current"
@@ -151,7 +164,12 @@ const mapStateToProps = state => ({
   loading: state.user.loading
 });
 
-export default connect(mapStateToProps, { getNewLocation, getGeolocation, searchRest, chooseRestaurant })(
+export default connect(mapStateToProps, {
+  getNewLocation,
+  getGeolocation,
+  searchRest,
+  chooseRestaurant
+})(
   GoogleApiWrapper({
     API_KEY: API_KEY
   })(MapContainer)

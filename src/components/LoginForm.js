@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { afterLogin } from "../actions";
 
-
 class LoginForm extends Component {
   state = {
     input: {
@@ -20,18 +19,19 @@ class LoginForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const body = this.state.input
+    const body = this.state.input;
 
-    this.props.afterLogin(body)
-    .then(user => this.props.handleLogin(user))
-    .catch(error => console.log(this.props.history.push("/")))
+    this.props
+      .afterLogin(body)
+      .then(user => this.props.handleLogin(user))
+      .catch(error => console.log(this.props.history.push("/")));
     this.setState({
       input: {
-        email: '',
-        password: ''
+        email: "",
+        password: ""
       }
-    })
-  }
+    });
+  };
 
   render() {
     const { input } = this.state;

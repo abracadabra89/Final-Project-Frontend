@@ -43,7 +43,7 @@ class Nav extends Component {
               Profile
             </NavLink>
             </div>
-            <NavLink to="/" exact className="active item" id="site-name">
+            <NavLink to="/" exact className="link item" id="site-name">
               Leftovers Search
             </NavLink>
             <div className="right menu">
