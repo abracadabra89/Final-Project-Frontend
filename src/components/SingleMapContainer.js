@@ -42,13 +42,13 @@ export class SingleMapContainer extends React.Component {
         onClick={this.onMapClicked}
       >
         {this.props.favorites
-          ? this.props.favorites.map(rest => {
+          ? this.props.favorites.map(restaurant => {
               return (
                 <Marker
-                  key={rest.id}
+                  key={restaurant.id}
                   onClick={this.onMarkerClick}
-                  name={rest.name}
-                  position={{ lat: rest.latitude, lng: rest.longitude }}
+                  name={restaurant.name}
+                  position={{ lat: restaurant.latitude, lng: restaurant.longitude }}
                 />
               );
             })

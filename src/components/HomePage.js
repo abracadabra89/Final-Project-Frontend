@@ -27,7 +27,6 @@ class HomePage extends Component {
           this.handleLogin(user);
         });
     }
-    this.props.getGeolocation();
   }
   handleLogin = user => {
     const token = localStorage.getItem("token");

@@ -9,6 +9,7 @@ import {
 import { connect } from "react-redux";
 import { Dimmer, Button } from "semantic-ui-react";
 import MapContainer from "../components/MapContainer";
+import { delay } from "lodash";
 
 class RestaurantsContainer extends React.Component {
   state = {
@@ -34,7 +35,11 @@ class RestaurantsContainer extends React.Component {
     this.props.postFavRestaurant(id);
   };
   handleSearch = e => {
-    this.props.getLocation();
+    this.props.getGeolocation();
+    delay(this.deactivateDimmer, 3000);
+  };
+
+  deactivateDimmer = () => {
     this.setState({ active: false });
   };
 

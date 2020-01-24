@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class SignupForm extends Component {
   state = {
     input: {
-      name: "",
       email: "",
       password: ""
     }
@@ -32,23 +31,7 @@ class SignupForm extends Component {
         </div>
         <form onSubmit={this.handleSubmit} className="ui large form">
           <div className="ui stacked segment">
-            <div
-              className="input
-			"
-            >
-              <div className="ui left icon input">
-                <i className="lock icon"></i>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={input.name}
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-
-            <div
+		  <div
               className="input
 			"
             >

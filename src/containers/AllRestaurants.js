@@ -12,11 +12,11 @@ class AllRestaurants extends React.Component {
         <h2>Restaurants</h2>
         {this.props.restaurants !== undefined ? (
           <List animated verticalAlign="middle">
-            {this.props.restaurants.map(rest => {
+            {this.props.restaurants.map(restaurant => {
               return (
-                <List.Item key={rest.id}>
+                <List.Item key={restaurant.id}>
                   <List.Content>
-                    <RestaurantList restaurant={rest} />
+                    <RestaurantList restaurant={restaurant} />
                   </List.Content>
                 </List.Item>
               );

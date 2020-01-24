@@ -28,7 +28,7 @@ export function postFavRestaurant(id) {
 export function deleteFavRestaurant(id) {
   return dispatch => {
     RestfulAdapter.deleteFetch("favorites", id).then(data => {
-      dispatch({ type: "FAV_LOADING", payload: data });
+      dispatch({ type: "FAV_LOAD", payload: data });
     });
   };
 }
@@ -36,8 +36,8 @@ export function deleteFavRestaurant(id) {
 export function createUser(body) {
   return dispatch => {
     dispatch({ type: "USER_LOADING" });
-    const newMessage = RestfulAdapter.createFetch("users", body).then(obj =>
-      alert(obj.msg)
+    const newMessage = RestfulAdapter.createFetch("users", body).then(object =>
+      alert(object.msg)
     );
     dispatch({ type: "USER_LOADED" });
     return newMessage;
@@ -92,7 +92,7 @@ export const getGeolocation = () => {
     const geolocation = navigator.geolocation;
     const location = new Promise((resolve, reject) => {
       if (!geolocation) {
-        reject(new Error("Not Supported"));
+        reject(new Error("error"));
       }
       geolocation.getCurrentPosition(
         position => {

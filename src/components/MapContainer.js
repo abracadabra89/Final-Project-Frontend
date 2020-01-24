@@ -87,7 +87,7 @@ export class MapContainer extends React.Component {
     };
     this.props.getNewLocation(chosenLocation);
     this.setState({ infoWindow: false });
-    this.props.searchRest("Items", thisLatidude, thisLongitude);
+    this.props.searchRest("Restaurants", thisLatidude, thisLongitude);
   };
 
   render() {

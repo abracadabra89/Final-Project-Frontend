@@ -18,26 +18,26 @@ function headers() {
 
 export class RestfulAdapter {
   static indexFetch(route) {
-    return fetch(`${API}/${route}`, getRequest()).then(responseHandler);
+    return fetch(`${API}/${route}`, getRequest()).then(handleResponse);
   }
   static showFetch(route, id) {
-    return fetch(`${API}/${route}/${id}`, getRequest()).then(responseHandler);
+    return fetch(`${API}/${route}/${id}`, getRequest()).then(handleResponse);
   }
   static createFetch(route, body) {
     console.log(route);
     console.log(body);
-    return fetch(`${API}/${route}`, postRequest(body)).then(responseHandler);
+    return fetch(`${API}/${route}`, postRequest(body)).then(handleResponse);
   }
   static editFetch(route, id, body) {
     return fetch(`${API}/${route}/${id}`, patchRequest(body)).then(
-      responseHandler
+      handleResponse
     );
   }
   static deleteFetch(route, id) {
     return fetch(`${API}/${route}/${id}`, {
       method: "DELETE",
       headers: headers()
-    }).then(responseHandler);
+    }).then(handleResponse);
   }
 }
 function getRequest() {
@@ -62,7 +62,7 @@ function postRequest(body) {
   };
 }
 
-function responseHandler(response) {
+function handleResponse(response) {
   if (response.ok) {
     return response.json();
   } else {

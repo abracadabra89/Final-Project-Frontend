@@ -39,7 +39,6 @@ class ShowRestaurants extends React.Component {
             {address}
           </a>
         </h3>
-        <h3>{address}</h3>
         <h3>{items}</h3>
         <div className="ui four column doubling stackable grid container">
           <Button fluid onClick={() => this.props.addFav(id)}>
