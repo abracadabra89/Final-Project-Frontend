@@ -16,15 +16,6 @@ class RestaurantsContainer extends React.Component {
     active: true
   };
 
-  handleNear = () => {
-    this.setState({ active: false });
-  };
-
-  componentDidMount() {
-    this.props.getGeolocation();
-    //this.props.fetchInitialRestaurants(this.props.location);
-  }
-
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       this.props.fetchInitialRestaurants(this.props.location);
@@ -34,6 +25,7 @@ class RestaurantsContainer extends React.Component {
   handleFavClick = id => {
     this.props.postFavRestaurant(id);
   };
+
   handleSearch = e => {
     this.props.getGeolocation();
     delay(this.deactivateDimmer, 3000);
@@ -43,9 +35,13 @@ class RestaurantsContainer extends React.Component {
     this.setState({ active: false });
   };
 
+  handleNear = () => {
+    this.setState({ active: false });
+  };
+
   render() {
     const { active } = this.state;
-    console.log(this.props.location);
+    //console.log(this.props.location);
     return (
       <div className="ui grid">
         <Dimmer active={active} onClickOutside={this.handdleNear} page>
@@ -66,7 +62,7 @@ class RestaurantsContainer extends React.Component {
             <ShowRestaurants
               location={this.props.location}
               chosenRestaurant={this.props.chosenRestaurant}
-              addFav={this.handleFavoriteClick}
+              addFav={this.handleFavClick}
             />
           ) : null}
         </div>

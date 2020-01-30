@@ -7,7 +7,6 @@ import RestaurantsContainer from "../containers/RestaurantsContainer";
 class HomePage extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
-    //console.log(token);
     if (
       token &&
       token !== undefined &&
@@ -28,6 +27,7 @@ class HomePage extends Component {
         });
     }
   }
+
   handleLogin = user => {
     const token = localStorage.getItem("token");
     //console.log(token);

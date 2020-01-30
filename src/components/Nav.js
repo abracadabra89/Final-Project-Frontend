@@ -39,9 +39,9 @@ class Nav extends Component {
               Leftovers
             </NavLink>
             <div className="ui menu">
-            <NavLink to="/profile" exact className="link item">
-              Profile
-            </NavLink>
+              <NavLink to="/profile" exact className="link item">
+                Profile
+              </NavLink>
             </div>
             <NavLink to="/" exact className="link item" id="site-name">
               Leftovers Search
@@ -77,11 +77,11 @@ class Nav extends Component {
             >
               Leftovers
             </NavLink>
-            {/* <div className="ui top attached tabulat menu">
-                <NavLink to="/" exact className="link item" id='site-name'>
-                  Log In
-                </NavLink>
-            </div> */}
+            <div className="ui top attached tabulat menu">
+              <NavLink to="/" exact className="link item" id="site-name">
+                Log In
+              </NavLink>
+            </div>
           </div>
         )}
       </div>

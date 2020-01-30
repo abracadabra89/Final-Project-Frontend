@@ -1,4 +1,4 @@
-const API = `http://localhost:3000`;
+const url = `http://localhost:3000`;
 
 function headers() {
   const token = localStorage.getItem("token");
@@ -18,28 +18,34 @@ function headers() {
 
 export class RestfulAdapter {
   static indexFetch(route) {
-    return fetch(`${API}/${route}`, getRequest()).then(handleResponse);
+    return fetch(`${url}/${route}`, getRequest())
+    .then(handleResponse);
   }
   static showFetch(route, id) {
-    return fetch(`${API}/${route}/${id}`, getRequest()).then(handleResponse);
+    return fetch(`${url}/${route}/${id}`, getRequest())
+    .then(handleResponse);
   }
   static createFetch(route, body) {
     console.log(route);
     console.log(body);
-    return fetch(`${API}/${route}`, postRequest(body)).then(handleResponse);
+    return fetch(`${url}/${route}`, postRequest(body))
+    .then(handleResponse);
   }
   static editFetch(route, id, body) {
-    return fetch(`${API}/${route}/${id}`, patchRequest(body)).then(
+    return fetch(`${url}/${route}/${id}`, patchRequest(body))
+    .then(
       handleResponse
     );
   }
   static deleteFetch(route, id) {
-    return fetch(`${API}/${route}/${id}`, {
+    return fetch(`${url}/${route}/${id}`, {
       method: "DELETE",
       headers: headers()
     }).then(handleResponse);
   }
 }
+
+
 function getRequest() {
   return {
     headers: headers()
@@ -66,6 +72,6 @@ function handleResponse(response) {
   if (response.ok) {
     return response.json();
   } else {
-    console.log("ERROR", response.json());
+     throw alert("Something went wrong");
   }
 }
