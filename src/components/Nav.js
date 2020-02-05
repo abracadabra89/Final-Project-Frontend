@@ -34,33 +34,29 @@ class Nav extends Component {
     return (
       <div>
         {this.props.loggedIn ? (
-          <div className="ui menu">
-            <NavLink to="/" exact className="link red item" id="site-name">
-              Leftovers
-            </NavLink>
-            <div className="ui menu">
-            <NavLink to="/profile" exact className="link item">
-              Profile
-            </NavLink>
-            </div>
+          <div className="ui secondary menu">
             <NavLink to="/" exact className="link item" id="site-name">
-              Leftovers Search
+              Home
             </NavLink>
+            <div className="ui secondary menu">
+              <NavLink to="/profile" exact className="link item">
+                Profile
+              </NavLink>
+            </div>
             <div className="right menu">
-              <div className=" fluid item">
-                <div className="ui transparent icon input">
+              <div className="ui fluid category search">
+                <div className="ui icon input">
                   <input
+                    class="prompt"
                     id="search"
                     type="search"
                     placeholder="Search Restaurants"
                     onChange={this.handleChange}
                     name="term"
                   ></input>
-                  <i
-                    className="search link icon"
-                    onClick={this.handleSubmit}
-                  ></i>
+                  <i className="search link icon" onClick={this.handleSubmit}></i>
                 </div>
+                <div class="results"></div>
               </div>
               <a className="item" onClick={this.handleLogout}>
                 Logout
@@ -69,18 +65,13 @@ class Nav extends Component {
           </div>
         ) : (
           <div className="ui menu">
-            <NavLink
-              to="/"
-              exact
-              className="link active red item"
-              id="site-name"
-            >
-              Leftovers
+            <NavLink to="/" exact className="link active item" id="site-name">
+              Bouffer
             </NavLink>
             {/* <div className="ui top attached tabulat menu">
-                <NavLink to="/" exact className="link item" id='site-name'>
-                  Log In
-                </NavLink>
+              <NavLink to="/" exact className="link item" id="site-name">
+                Log In
+              </NavLink>
             </div> */}
           </div>
         )}

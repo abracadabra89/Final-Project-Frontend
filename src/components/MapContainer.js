@@ -8,11 +8,11 @@ import {
   chooseRestaurant
 } from "../actions";
 
-const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+const KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const style = {
   width: "100%",
-  height: "100%"
+  height: "92.5%"
 };
 
 export class MapContainer extends React.Component {
@@ -148,7 +148,7 @@ export class MapContainer extends React.Component {
               visible={this.state.infoWindow}
             >
               <div>
-                <h1>{this.state.chosenPlace.name}</h1>
+                <h1 id='title'>{this.state.chosenPlace.name}</h1>
               </div>
             </InfoWindow>
           </Map>
@@ -171,6 +171,6 @@ export default connect(mapStateToProps, {
   chooseRestaurant
 })(
   GoogleApiWrapper({
-    API_KEY: API_KEY
+    KEY: KEY
   })(MapContainer)
 );

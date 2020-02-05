@@ -7,7 +7,6 @@ import RestaurantsContainer from "../containers/RestaurantsContainer";
 class HomePage extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
-    //console.log(token);
     if (
       token &&
       token !== undefined &&
@@ -21,16 +20,17 @@ class HomePage extends Component {
           Authorization: token
         }
       };
-      fetch(`http://localhost:3000/api/v1/reauth`, options)
+      fetch(`http://localhost:3000/api/v1/auth`, options)
         .then(resp => resp.json())
         .then(user => {
           this.handleLogin(user);
         });
     }
   }
+
   handleLogin = user => {
     const token = localStorage.getItem("token");
-    //console.log(token);
+    console.log(token);
     if (!!token) {
       console.log("token is there");
     } else {
@@ -38,6 +38,8 @@ class HomePage extends Component {
     }
     this.props.logIn(user);
   };
+
+
 
   render() {
     return (

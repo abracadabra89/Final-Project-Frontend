@@ -16,15 +16,6 @@ class RestaurantsContainer extends React.Component {
     active: true
   };
 
-  handleNear = () => {
-    this.setState({ active: false });
-  };
-
-  componentDidMount() {
-    this.props.getGeolocation();
-    //this.props.fetchInitialRestaurants(this.props.location);
-  }
-
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       this.props.fetchInitialRestaurants(this.props.location);
@@ -34,6 +25,7 @@ class RestaurantsContainer extends React.Component {
   handleFavClick = id => {
     this.props.postFavRestaurant(id);
   };
+
   handleSearch = e => {
     this.props.getGeolocation();
     delay(this.deactivateDimmer, 3000);
@@ -43,17 +35,24 @@ class RestaurantsContainer extends React.Component {
     this.setState({ active: false });
   };
 
+  handleNear = () => {
+    this.setState({ active: false });
+  };
+
   render() {
     const { active } = this.state;
-    console.log(this.props.location);
+    //console.log(this.props.location);
     return (
       <div className="ui grid">
         <Dimmer active={active} onClickOutside={this.handdleNear} page>
-          <Button negative size="big" onClick={this.handleSearch}>
-            Find some leftovers!
+          <Button basic color="teal" content="Teal" onClick={this.handleSearch}>
+            Find restaurants
           </Button>
         </Dimmer>
         <div className="six wide column">
+          <br></br>
+          <br></br>
+          <br></br>
           {this.props.restaurants !== null ? (
             <AllRestaurants restaurants={this.props.restaurants} />
           ) : (
@@ -61,12 +60,15 @@ class RestaurantsContainer extends React.Component {
           )}
         </div>
         <div className="ten wide column">
+          <br></br>
+          <br></br>
+          <br></br>
           <MapContainer />
           {this.props.chosenRestaurant !== null ? (
             <ShowRestaurants
               location={this.props.location}
               chosenRestaurant={this.props.chosenRestaurant}
-              addFav={this.handleFavoriteClick}
+              addFav={this.handleFavClick}
             />
           ) : null}
         </div>
@@ -80,7 +82,6 @@ const mapStateToProps = state => ({
   chosenRestaurant: state.restaurants.chosenRestaurant,
   location: state.user.location,
   loading: state.user.loading
-  // state.restaurants.find(r => r.id === state.chosenRestaurant)
 });
 
 export default connect(mapStateToProps, {

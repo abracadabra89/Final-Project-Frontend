@@ -2,7 +2,8 @@ import React from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import { connect } from "react-redux";
 
-const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+const KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+
 
 const style = {
   width: "100%",
@@ -11,9 +12,9 @@ const style = {
 
 export class SingleMapContainer extends React.Component {
   state = {
-    infoWindow: false,
+    chosenPlace: {},
     activeMarker: {},
-    chosenPlace: {}
+    infoWindow: false
   };
 
   mapClicked = (mapProps, map, clickEvent) => {
@@ -29,7 +30,6 @@ export class SingleMapContainer extends React.Component {
     });
 
   render() {
-    // console.log(this.props.restaurants);
     return (
       <Map
         google={this.props.google}
@@ -38,8 +38,8 @@ export class SingleMapContainer extends React.Component {
           lat: 40.7007739,
           lng: -73.9877738
         }}
-        zoom={11}
-        onClick={this.onMapClicked}
+        zoom={10}
+        onClick={this.mapClicked}
       >
         {this.props.favorites
           ? this.props.favorites.map(restaurant => {
@@ -48,7 +48,10 @@ export class SingleMapContainer extends React.Component {
                   key={restaurant.id}
                   onClick={this.onMarkerClick}
                   name={restaurant.name}
-                  position={{ lat: restaurant.latitude, lng: restaurant.longitude }}
+                  position={{
+                    lat: restaurant.latitude,
+                    lng: restaurant.longitude
+                  }}
                 />
               );
             })
@@ -72,6 +75,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(
   GoogleApiWrapper({
-    API_KEY: API_KEY
+    KEY: KEY
   })(SingleMapContainer)
 );

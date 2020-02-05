@@ -61,4 +61,4 @@ const mapStateToProps = state => ({
   location: state.user.location
 });
 
-export default connect(mapStateToProps, deleteFavRestaurant )(Profile);
+export default connect(mapStateToProps, {deleteFavRestaurant})(Profile);

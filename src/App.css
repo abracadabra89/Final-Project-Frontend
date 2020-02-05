@@ -1,29 +1,58 @@
-.landing {
-  background: #e5e2aa url("./leftovers-cover.jpg") 80% 30% !important;
+body {
+  background: #ffffff url("https://images.unsplash.com/photo-1558201203-db053afbff44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80") 80% 30%;
 }
 
 .landing.segment {
   min-height: 900px;
 }
 
+.a.link.item {
+  background:#ffffff;
+}
+
+.a {
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Helvetica';
+}
+.clearing.segment {
+  min-height: 60px;
+  text-align: center;
+   padding: 20px;
+   font-family: 'Helvetica Neue';
+   font-size: 1.25rem;
+   color: grey;
+   font-weight: bold;
+   background: #ffffff;
+   
+}
+
 .landing h1,
 h2 {
   text-align: center;
+   font-family: 'Helvetica';
+   
 }
 
 .landing h1 {
-  font-family: 'Helvetica', cursive !important;
+  font-family: 'Helvetica';
+  
 }
 
-.ui.menu>.item:first-child {
-  font-family: 'Helvetica', cursive !important;
+.ui.menu {
+  font-family: 'Helvetica';
+  background: #ffffff;
 }
+
 
 .masthead h1.ui.header {
   margin-top: 3em;
-  margin-bottom: 0em;
-  font-size: 4.5em;
-  font-weight: normal
+  font-size: 3.5em;
+  font-weight: normal;
+  color:black;
 }
 
 .masthead h2 {
@@ -41,21 +70,23 @@ h2 {
   text-align: center;
   display: block;
   transition: color 140ms;
+  background: #ffffff;
+  
 }
 
 #home form a:link {
-  color: rgb(172, 186, 199);
+  color:#ffffff;
 }
 
-#home form {
+/* #home form {
   margin: 1.1rem auto;
   display: block;
   padding: 1rem;
   max-width: 350px;
   box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.2);
-  background: #f8e2e2;
+  background: #ffffff;
   font-size: 1.25rem;
-}
+} */
 
 
 #nav {
@@ -66,14 +97,14 @@ h2 {
   justify-content: flex-end;
   padding: 0 1rem;
   margin: 0;
+  
 }
 
 #nav .nav-link {
   text-decoration: none;
   width: 100px;
-  padding: 12px;
   background: #111;
-  color: white;
+  color: rgb(2, 2, 2);
   text-align: center;
   width: auto;
   transition: background 150ms;
@@ -84,13 +115,44 @@ h2 {
 }
 
 #nav .nav-link:hover {
-  background: rgb(95, 86, 86);
+  background: #ffffff;
 }
 
 #nav .nav-link:active {
-  background: rgb(216, 204, 204);
+  background: #ffffff;
 }
 
 #nav #site-name {
   margin-right: auto;
+  background: #ffffff;
+}
+
+.a {
+  font-size: 1.8em;
+  font-weight: normal;
+  background: #ffffff;
+  color: black;
+}
+
+a {
+  font-family: 'Helvetica Neue';
+  font-size: 1em;
+  font-weight: normal;
+  background: #ffffff;
+  color: black;
+}
+
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  justify-content: flex-end;
+}
+.stacked.segment {
+color: black;
+background: #ffffff;
+} 
+
+h2 {
+  color: black;
+  background: #ffffff;
 }

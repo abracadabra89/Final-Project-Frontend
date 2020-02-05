@@ -18,8 +18,8 @@ class SignupForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const body = this.state.input;
-	this.props.createUser(body).
-	then(this.props.history.push("/"));
+	this.props.createUser(body)
+	.then(this.props.history.push("/"));
   };
 
   render() {
@@ -32,7 +32,7 @@ class SignupForm extends Component {
         <form onSubmit={this.handleSubmit} className="ui large form">
           <div className="ui stacked segment">
 		  <div
-              className="input
+              className="field
 			"
             >
               <div className="ui left icon input">
@@ -47,7 +47,7 @@ class SignupForm extends Component {
               </div>
             </div>
             <div
-              className="input
+              className="field
 			"
             >
               <div className="ui left icon input">
