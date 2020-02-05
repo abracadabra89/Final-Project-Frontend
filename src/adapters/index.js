@@ -38,7 +38,10 @@ export class RestfulAdapter {
     );
   }
   static deleteFetch(route, id) {
+<<<<<<< HEAD
     console.log(route);
+=======
+>>>>>>> b818206c4bab1cdaf02c7ab28a227c1ab40b9658
     return fetch(`${url}/${route}/${id}`, {
       method: "DELETE",
       headers: headers()

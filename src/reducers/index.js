@@ -85,7 +85,11 @@ const userReducer = (
         }
       };
     }
+<<<<<<< HEAD
     case "GET_NEW_LOCATION": {
+=======
+    case "GET_NEW_GEOLOCATION": {
+>>>>>>> b818206c4bab1cdaf02c7ab28a227c1ab40b9658
       // console.log(action.payload);
       return {
         ...state,

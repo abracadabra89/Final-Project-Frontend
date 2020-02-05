@@ -131,5 +131,4 @@ class LoginForm extends Component {
   }
 }
 
-
 export default connect(null, { afterLogin })(LoginForm);
