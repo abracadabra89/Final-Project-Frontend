@@ -3,12 +3,10 @@ import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import { connect } from "react-redux";
 import {
   getNewLocation,
-  getGeolocation,
+  getLocation,
   searchRest,
   chooseRestaurant
 } from "../actions";
-
-const KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const style = {
   width: "100%",
@@ -24,10 +22,6 @@ export class MapContainer extends React.Component {
       chosenPlace: {}
     };
   }
-
-//   componentDidMount() {
-//     this.props.getGeolocation();
-//   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (
@@ -87,7 +81,7 @@ export class MapContainer extends React.Component {
     };
     this.props.getNewLocation(chosenLocation);
     this.setState({ infoWindow: false });
-    this.props.searchRest("Restaurants", thisLatidude, thisLongitude);
+    this.props.searchRest("Italian", thisLatidude, thisLongitude);
   };
 
   render() {
@@ -144,11 +138,12 @@ export class MapContainer extends React.Component {
               }}
             />
             <InfoWindow
+              onOpen={this.openedInfoWindow}
               marker={this.state.activeMarker}
               visible={this.state.infoWindow}
             >
               <div>
-                <h1 id='title'>{this.state.chosenPlace.name}</h1>
+                <h1 id="title">{this.state.chosenPlace.name}</h1>
               </div>
             </InfoWindow>
           </Map>
@@ -166,11 +161,12 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   getNewLocation,
-  getGeolocation,
+  getLocation,
   searchRest,
   chooseRestaurant
 })(
   GoogleApiWrapper({
-    KEY: KEY
+    KEY:
+      "rHjt4KZNVRamu4cGM_nbGIHwLz08nG57OZREk97edmfNyiTh9cGHfoxHpd88DiRnnTLeFh4YJD2C-CTvnQOFFrA77IaQyQTJofaRGNjc93DIhZuzaKN24g8BpZwwXnYx"
   })(MapContainer)
 );

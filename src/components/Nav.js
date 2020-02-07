@@ -35,11 +35,11 @@ class Nav extends Component {
       <div>
         {this.props.loggedIn ? (
           <div className="ui secondary menu">
-            <NavLink to="/" exact className="link item" id="site-name">
+            <NavLink to="/" className="link item" id="site-name">
               Home
             </NavLink>
             <div className="ui secondary menu">
-              <NavLink to="/profile" exact className="link item">
+              <NavLink to="/profile" className="link item">
                 Profile
               </NavLink>
             </div>
@@ -47,16 +47,19 @@ class Nav extends Component {
               <div className="ui fluid category search">
                 <div className="ui icon input">
                   <input
-                    class="prompt"
+                    className="prompt"
                     id="search"
                     type="search"
                     placeholder="Search Restaurants"
                     onChange={this.handleChange}
                     name="term"
                   ></input>
-                  <i className="search link icon" onClick={this.handleSubmit}></i>
+                  <i
+                    className="search link icon"
+                    onClick={this.handleSubmit}
+                  ></i>
                 </div>
-                <div class="results"></div>
+                <div className="results"></div>
               </div>
               <a className="item" onClick={this.handleLogout}>
                 Logout
@@ -66,13 +69,8 @@ class Nav extends Component {
         ) : (
           <div className="ui menu">
             <NavLink to="/" exact className="link active item" id="site-name">
-              Bouffer
+              AppEtite
             </NavLink>
-            {/* <div className="ui top attached tabulat menu">
-              <NavLink to="/" exact className="link item" id="site-name">
-                Log In
-              </NavLink>
-            </div> */}
           </div>
         )}
       </div>

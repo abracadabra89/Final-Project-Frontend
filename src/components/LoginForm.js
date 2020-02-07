@@ -7,7 +7,6 @@ import {
   Form,
   Grid,
   Header,
-  Image,
   Message,
   Segment
 } from "semantic-ui-react";
@@ -28,7 +27,6 @@ class LoginForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const body = this.state.input;
-
     this.props
       .afterLogin(body)
       .then(user => this.props.handleLogin(user))
@@ -50,7 +48,7 @@ class LoginForm extends Component {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" color="white" textAlign="center"></Header>
+          <Header as="h2" color="grey" textAlign="center"></Header>
           <Form onSubmit={this.handleSubmit} size="large">
             <Segment stacked>
               <div className="input">
@@ -78,7 +76,7 @@ class LoginForm extends Component {
                 />
               </div>
 
-              <Button type="submit" color="white" fluid size="large">
+              <Button type="submit" color="grey" fluid size="large">
                 <h4>Login</h4>
               </Button>
             </Segment>
@@ -90,43 +88,6 @@ class LoginForm extends Component {
           </Message>
         </Grid.Column>
       </Grid>
-      // <div className="ui segment center landing masthead">
-      //   <div className="ui text container">
-      //     <h1 className="ui inverted header">Bouffer</h1>
-      //   </div>
-      //   <form onSubmit={this.handleSubmit} className="ui large form">
-      //     <div className="ui stacked segment">
-      //       <div className="ui transparent input">
-      //         <div className="ui left icon input">
-      //           <i className="user icon"></i>
-      //           <input
-      //             type="text"
-      //             name="email"
-      //             placeholder="Email"
-      //             value={input.email}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-      //       </div>
-      //       <div className="ui transparent inputinput">
-      //         <div className="ui left icon input">
-      //           <i className="lock icon"></i>
-      //           <input
-      //             type="password"
-      //             name="password"
-      //             placeholder="Password"
-      //             value={input.password}
-      //             onChange={this.handleChange}
-      //           />
-      //         </div>
-      //       </div>
-      //       <button type="submit" className="ui fluid inverted blue button">
-      //         Login
-      //       </button>
-      //     </div>
-      //     <Link to="/signup">Register here</Link>
-      //   </form>
-      // </div>
     );
   }
 }

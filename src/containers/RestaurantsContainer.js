@@ -4,7 +4,7 @@ import ShowRestaurants from "../components/ShowRestaurants";
 import {
   fetchInitialRestaurants,
   postFavRestaurant,
-  getGeolocation
+  getLocation
 } from "../actions";
 import { connect } from "react-redux";
 import { Dimmer, Button } from "semantic-ui-react";
@@ -27,7 +27,7 @@ class RestaurantsContainer extends React.Component {
   };
 
   handleSearch = e => {
-    this.props.getGeolocation();
+    this.props.getLocation();
     delay(this.deactivateDimmer, 3000);
   };
 
@@ -45,7 +45,7 @@ class RestaurantsContainer extends React.Component {
     return (
       <div className="ui grid">
         <Dimmer active={active} onClickOutside={this.handdleNear} page>
-          <Button basic color="teal" content="Teal" onClick={this.handleSearch}>
+          <Button basic color="teal" onClick={this.handleSearch}>
             Find restaurants
           </Button>
         </Dimmer>
@@ -87,5 +87,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   fetchInitialRestaurants,
   postFavRestaurant,
-  getGeolocation
+  getLocation
 })(RestaurantsContainer);

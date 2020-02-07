@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { logIn, createUser } from "../actions";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 class SignupForm extends Component {
   state = {
@@ -18,8 +18,7 @@ class SignupForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const body = this.state.input;
-	this.props.createUser(body)
-	.then(this.props.history.push("/"));
+    this.props.createUser(body).then(this.props.history.push("/"));
   };
 
   render() {
@@ -31,7 +30,7 @@ class SignupForm extends Component {
         </div>
         <form onSubmit={this.handleSubmit} className="ui large form">
           <div className="ui stacked segment">
-		  <div
+            <div
               className="field
 			"
             >

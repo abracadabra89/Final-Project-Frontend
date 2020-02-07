@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import LoginForm from "./LoginForm";
 import { connect } from "react-redux";
-import { logIn, logOut, getGeolocation } from "../actions";
+import { logIn, logOut, getLocation } from "../actions";
 import RestaurantsContainer from "../containers/RestaurantsContainer";
 
 class HomePage extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
+    console.log(token);
     if (
       token &&
       token !== undefined &&
@@ -20,7 +21,7 @@ class HomePage extends Component {
           Authorization: token
         }
       };
-      fetch(`http://localhost:3000/api/v1/auth`, options)
+      fetch(`http://localhost:3000/api/v1/reauth`, options)
         .then(resp => resp.json())
         .then(user => {
           this.handleLogin(user);
@@ -38,8 +39,6 @@ class HomePage extends Component {
     }
     this.props.logIn(user);
   };
-
-
 
   render() {
     return (
@@ -69,6 +68,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { logIn, logOut, getGeolocation })(
+export default connect(mapStateToProps, { logIn, logOut, getLocation })(
   HomePage
 );

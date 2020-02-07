@@ -3,8 +3,8 @@ import { RestfulAdapter } from "../adapters";
 export function fetchInitialRestaurants(location) {
   return dispatch => {
     dispatch({ type: "RESTAURANTS_LOADING" });
-   const body = {
-      term: "Food",
+    const body = {
+      term: "Dinner",
       latitude: location.latitude,
       longitude: location.longitude
     };
@@ -36,6 +36,7 @@ export function afterLogin(body) {
 }
 
 export function postFavRestaurant(id) {
+  console.log(id);
   return dispatch => {
     dispatch({ type: "FAV_LOADING" });
     const body = { business_id: id };
@@ -46,6 +47,7 @@ export function postFavRestaurant(id) {
 }
 
 export function deleteFavRestaurant(id) {
+  console.log(id);
   return dispatch => {
     RestfulAdapter.deleteFetch("favorites", id).then(data => {
       dispatch({ type: "FAV_LOAD", payload: data });
@@ -67,7 +69,7 @@ export function chooseRestaurant(restaurant) {
   return { type: "CHOOSE_RESTAURANT", payload: restaurant };
 }
 
-export function deleteRestaurant() {
+export function closeRestaurant() {
   return { type: "DELETE_RESTAURANT" };
 }
 
@@ -86,7 +88,7 @@ export const getNewLocation = location => {
   return { type: "GET_NEW_LOCATION", payload: action };
 };
 
-export const getGeolocation = () => {
+export const getLocation = () => {
   return dispatch => {
     dispatch({ type: "GEOLOCATION_LOADING" });
     const geolocation = navigator.geolocation;

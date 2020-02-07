@@ -2,9 +2,6 @@ import React from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import { connect } from "react-redux";
 
-const KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-
-
 const style = {
   width: "100%",
   height: "80%"
@@ -75,6 +72,7 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(
   GoogleApiWrapper({
-    KEY: KEY
+    KEY:
+      "rHjt4KZNVRamu4cGM_nbGIHwLz08nG57OZREk97edmfNyiTh9cGHfoxHpd88DiRnnTLeFh4YJD2C-CTvnQOFFrA77IaQyQTJofaRGNjc93DIhZuzaKN24g8BpZwwXnYx"
   })(SingleMapContainer)
 );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { deleteRestaurant } from "../actions";
+import { closeRestaurant } from "../actions";
 
 const style = {
   position: "fixed",
@@ -17,18 +17,24 @@ class ShowRestaurants extends React.Component {
   }
 
   render() {
-    const { id, image_url, name, address, latitude, longitude } = this.props.chosenRestaurant;
+    const {
+      id,
+      image_url,
+      name,
+      address,
+      latitude,
+      longitude
+    } = this.props.chosenRestaurant;
     return (
       <div className="ui container segment center aligned" style={style}>
         <div className="column"></div>
         <Button
-          transparent
           floated="right"
           icon="close"
-          onClick={() => this.props.deleteRestaurant()}
+          onClick={() => this.props.closeRestaurant()}
         />
         <div className="content"></div>
-        <a class="header">
+        <a className="header">
           <h4>{name}</h4>
         </a>
         <div className="ui fluid card">
@@ -46,12 +52,7 @@ class ShowRestaurants extends React.Component {
           </h4>
         </div>
         <div className="ui four column doubling stackable grid container">
-          <Button
-            content="Standard"
-            basic
-            fluid
-            onClick={() => this.props.addFav(id)}
-          >
+          <Button basic fluid onClick={() => this.props.addFav(id)}>
             Add to ❤️
           </Button>
         </div>
@@ -59,4 +60,4 @@ class ShowRestaurants extends React.Component {
     );
   }
 }
-export default connect(null, { deleteRestaurant })(ShowRestaurants);
+export default connect(null, { closeRestaurant })(ShowRestaurants);

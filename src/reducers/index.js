@@ -5,7 +5,7 @@ const restaurantsReducer = (
     restaurants: [],
     chosenRestaurant: null,
     loading: true,
-    formData: { name: "", title: "" }
+    formData: { name: "", title: "", key_skill: "" }
   },
   action
 ) => {
@@ -19,7 +19,7 @@ const restaurantsReducer = (
       return {
         ...state,
         restaurants: action.payload,
-        loading: true
+        loading: false
       };
     case "CHOOSE_RESTAURANT":
       return {
@@ -41,6 +41,7 @@ const userReducer = (
 ) => {
   switch (action.type) {
     case "LOG_IN":
+      console.log(action.payload);
       return {
         ...state,
         loggedIn: true,
@@ -85,11 +86,7 @@ const userReducer = (
         }
       };
     }
-<<<<<<< HEAD
     case "GET_NEW_LOCATION": {
-=======
-    case "GET_NEW_GEOLOCATION": {
->>>>>>> b818206c4bab1cdaf02c7ab28a227c1ab40b9658
       // console.log(action.payload);
       return {
         ...state,
@@ -106,6 +103,7 @@ const userReducer = (
         loading: true
       };
     case "FAV_LOAD":
+      //console.log(action.payload);
       return {
         ...state,
         currentUser: {

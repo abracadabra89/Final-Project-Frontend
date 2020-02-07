@@ -18,37 +18,30 @@ function headers() {
 
 export class RestfulAdapter {
   static indexFetch(route) {
-    return fetch(`${url}/${route}`, getRequest())
-    .then(handleResponse);
+    return fetch(`${url}/${route}`, getRequest()).then(handleResponse);
   }
   static showFetch(route, id) {
-    return fetch(`${url}/${route}/${id}`, getRequest())
-    .then(handleResponse);
+    return fetch(`${url}/${route}/${id}`, getRequest()).then(handleResponse);
   }
   static createFetch(route, body) {
     console.log(route);
     console.log(body);
-    return fetch(`${url}/${route}`, postRequest(body))
-    .then(handleResponse);
+    return fetch(`${url}/${route}`, postRequest(body)).then(handleResponse);
   }
   static editFetch(route, id, body) {
-    return fetch(`${url}/${route}/${id}`, patchRequest(body))
-    .then(
+    return fetch(`${url}/${route}/${id}`, patchRequest(body)).then(
       handleResponse
     );
   }
   static deleteFetch(route, id) {
-<<<<<<< HEAD
     console.log(route);
-=======
->>>>>>> b818206c4bab1cdaf02c7ab28a227c1ab40b9658
+    console.log(id);
     return fetch(`${url}/${route}/${id}`, {
       method: "DELETE",
       headers: headers()
     }).then(handleResponse);
   }
 }
-
 
 function getRequest() {
   return {
@@ -75,7 +68,6 @@ function postRequest(body) {
 function handleResponse(response) {
   if (response.ok) {
     return response.json();
-  } else {
-     throw alert("Something went wrong");
   }
+  throw alert("Something went wrong");
 }
