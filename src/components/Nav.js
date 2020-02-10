@@ -40,7 +40,7 @@ class Nav extends Component {
             </NavLink>
             <div className="ui secondary menu">
               <NavLink to="/profile" className="link item">
-                Profile
+                Favorites
               </NavLink>
             </div>
             <div className="right menu">

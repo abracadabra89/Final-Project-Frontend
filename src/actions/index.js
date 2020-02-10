@@ -47,7 +47,7 @@ export function postFavRestaurant(id) {
 }
 
 export function deleteFavRestaurant(id) {
-  console.log(id);
+  //console.log(id);
   return dispatch => {
     RestfulAdapter.deleteFetch("favorites", id).then(data => {
       dispatch({ type: "FAV_LOAD", payload: data });

@@ -24,8 +24,6 @@ export class RestfulAdapter {
     return fetch(`${url}/${route}/${id}`, getRequest()).then(handleResponse);
   }
   static createFetch(route, body) {
-    console.log(route);
-    console.log(body);
     return fetch(`${url}/${route}`, postRequest(body)).then(handleResponse);
   }
   static editFetch(route, id, body) {
@@ -33,15 +31,18 @@ export class RestfulAdapter {
       handleResponse
     );
   }
+
   static deleteFetch(route, id) {
-    console.log(route);
-    console.log(id);
     return fetch(`${url}/${route}/${id}`, {
-      method: "DELETE",
-      headers: headers()
-    }).then(handleResponse);
-  }
+      method: "DELETE"
+      }).then(() => {
+     console.log('removed');
+  }).catch(err => {
+    console.error(err)
+  });
+ }
 }
+  
 
 function getRequest() {
   return {
@@ -64,10 +65,19 @@ function postRequest(body) {
     body: JSON.stringify(body)
   };
 }
+  
+ function handleResponse(resp) {
+  return new Promise(resolve => {
+    if (resp.ok) {
+      resp
+        .json()
+        .then(json => resolve(json))
+        .catch(() => resolve(null));
+    } else {
+      resolve(null);
+    }
+  });
+};
 
-function handleResponse(response) {
-  if (response.ok) {
-    return response.json();
-  }
-  throw alert("Something went wrong");
-}
+  
+  

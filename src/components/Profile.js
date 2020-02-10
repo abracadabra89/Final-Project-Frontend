@@ -5,9 +5,10 @@ import { Button, Icon, Image, Modal, List } from "semantic-ui-react";
 import { deleteFavRestaurant } from "../actions";
 
 class Profile extends Component {
+  
+
   render() {
     console.log(this.props.currentUser);
-
     return (
       <div>
         {this.props.currentUser ? (
@@ -49,9 +50,7 @@ class Profile extends Component {
                               <Button
                                 primary
                                 onClick={() =>
-                                  this.props.deleteFavRestaurant(
-                                    restaurant.favorite_id
-                                  )
+                                  this.props.deleteFavRestaurant(restaurant.id)
                                 }
                               >
                                 Delete <Icon name="close" />
@@ -70,7 +69,7 @@ class Profile extends Component {
             <SingleMapContainer />
           </div>
         ) : (
-          <p>Loading</p>
+          <p></p>
         )}
       </div>
     );
