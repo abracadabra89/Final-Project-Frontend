@@ -97,6 +97,12 @@ const userReducer = (
       };
     }
 
+    case "NO_LOCATION":
+      return  {
+        ...state,
+        loading: false
+      }
+
     case "FAV_LOADING":
       return {
         ...state,

@@ -18,28 +18,28 @@ class Profile extends Component {
                 <h3>Favorites</h3>
                 <List divided verticalAlign="middle" size="huge">
                   {this.props.currentUser.favorites !== undefined ? (
-                    this.props.currentUser.favorites.map(restaurant => (
-                      <List.Item key={restaurant.id}>
-                        {console.log(restaurant)}
+                    this.props.currentUser.favorites.map(rest => (
+                      <List.Item key={rest.id}>
+                        {console.log(rest)}
                         <List.Content>
                           <Modal
-                            trigger={<Button>{restaurant.name}</Button>}
+                            trigger={<Button>{rest.name}</Button>}
                             closeIcon
                           >
                             <Modal.Content image scrolling>
                               <Image
                                 size="small"
-                                src={restaurant.image_url}
+                                src={rest.image_url}
                                 wrapped
                               />
                               <Modal.Description>
-                                {restaurant.name}
+                                {rest.name}
                                 <h3>
                                   <a
                                     target="_blank"
-                                    href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.location.latitude}%2C${this.props.location.longitude}&destination=${restaurant.latitude}%2C${restaurant.longitude}`}
+                                    href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.location.latitude}%2C${this.props.location.longitude}&destination=${rest.latitude}%2C${rest.longitude}`}
                                   >
-                                    {restaurant.address}
+                                    {rest.address}
                                   </a>
                                 </h3>
                                 <br></br>
@@ -50,7 +50,7 @@ class Profile extends Component {
                               <Button
                                 primary
                                 onClick={() =>
-                                  this.props.deleteFavRestaurant(restaurant.id)
+                                  this.props.deleteFavRestaurant(rest.id)
                                 }
                               >
                                 Delete <Icon name="close" />

@@ -18,9 +18,8 @@ export function fetchInitialRestaurants(location) {
 export function createUser(body) {
   return dispatch => {
     dispatch({ type: "USER_LOADING" });
-    const newMessage = RestfulAdapter.createFetch("users", body).then(object =>
-      alert(object.msg)
-    );
+    const newMessage = RestfulAdapter.createFetch("users", body)
+    .then(object => alert(object.msg));
     dispatch({ type: "USER_LOADED" });
     return newMessage;
   };
@@ -36,7 +35,6 @@ export function afterLogin(body) {
 }
 
 export function postFavRestaurant(id) {
-  console.log(id);
   return dispatch => {
     dispatch({ type: "FAV_LOADING" });
     const body = { business_id: id };

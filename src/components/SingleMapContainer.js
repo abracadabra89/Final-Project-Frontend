@@ -39,17 +39,17 @@ export class SingleMapContainer extends React.Component {
         onClick={this.mapClicked}
       >
         {this.props.favorites
-          ? this.props.favorites.map(rest => {
+          ? this.props.favorites.map(restaurant => {
               return (
                 <Marker
-                  key={rest.id}
+                  key={restaurant.id}
                   onClick={this.onMarkerClick}
-                  name={rest.name}
-                  position={{ lat: rest.latitude, lng: rest.longitude }}
+                  name={restaurant.name}
+                  position={{ lat: restaurant.latitude, lng: restaurant.longitude }}
                 />
               );
             })
-          : []}
+          : null}
 
         <InfoWindow
           marker={this.state.activeMarker}
@@ -65,11 +65,11 @@ export class SingleMapContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  favorites: state.user.currentUser.favorites
+  favorites: state.user.currentUser.favorites,
 });
 
 export default connect(mapStateToProps)(
   GoogleApiWrapper({
-    api:('rHjt4KZNVRamu4cGM_nbGIHwLz08nG57OZREk97edmfNyiTh9cGHfoxHpd88DiRnnTLeFh4YJD2C-CTvnQOFFrA77IaQyQTJofaRGNjc93DIhZuzaKN24g8BpZwwXnYx')
+    key: ("rHjt4KZNVRamu4cGM_nbGIHwLz08nG57OZREk97edmfNyiTh9cGHfoxHpd88DiRnnTLeFh4YJD2C-CTvnQOFFrA77IaQyQTJofaRGNjc93DIhZuzaKN24g8BpZwwXnYx")
   })(SingleMapContainer)
 );

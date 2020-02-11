@@ -117,6 +117,7 @@ export class MapContainer extends React.Component {
                   return (
                     <Marker
                       key={restaurant.id}
+                      onClick={this.onMarkerClick}
                       onMouseMarker={this.handleMouseClick}
                       name={restaurant.name}
                       position={{
@@ -126,12 +127,12 @@ export class MapContainer extends React.Component {
                     />
                   );
                 })
-              : null}
+              : (null)}
 
             <Marker
               id="current"
               asset={asset}
-              name={"This Location"}
+              name={"Current Location"}
               position={{
                 lat: this.props.location.latitude,
                 lng: this.props.location.longitude

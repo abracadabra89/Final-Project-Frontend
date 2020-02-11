@@ -8,7 +8,6 @@ export class Marker extends React.Component {
 
         <Marker onClick={this.onMarkerClick}
                 name={'Current location'} />
-        </Map>
     );
   }
 }
