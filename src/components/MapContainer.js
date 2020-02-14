@@ -8,6 +8,9 @@ import {
   chooseRestaurant
 } from "../actions";
 
+const KEY =
+  "rHjt4KZNVRamu4cGM_nbGIHwLz08nG57OZREk97edmfNyiTh9cGHfoxHpd88DiRnnTLeFh4YJD2C-CTvnQOFFrA77IaQyQTJofaRGNjc93DIhZuzaKN24g8BpZwwXnYx";
+
 const style = {
   width: "100%",
   height: "92.5%"
@@ -167,7 +170,7 @@ export default connect(mapStateToProps, {
   chooseRestaurant
 })(
   GoogleApiWrapper({
-    KEY:
-      "rHjt4KZNVRamu4cGM_nbGIHwLz08nG57OZREk97edmfNyiTh9cGHfoxHpd88DiRnnTLeFh4YJD2C-CTvnQOFFrA77IaQyQTJofaRGNjc93DIhZuzaKN24g8BpZwwXnYx"
+    KEY: KEY
+      
   })(MapContainer)
 );

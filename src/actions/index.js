@@ -1,10 +1,11 @@
 import { RestfulAdapter } from "../adapters";
 
+
 export function fetchInitialRestaurants(location) {
   return dispatch => {
     dispatch({ type: "RESTAURANTS_LOADING" });
     const body = {
-      term: "Dinner",
+      term: "Food",
       latitude: location.latitude,
       longitude: location.longitude
     };
@@ -45,13 +46,15 @@ export function postFavRestaurant(id) {
 }
 
 export function deleteFavRestaurant(id) {
-  //console.log(id);
   return dispatch => {
+      dispatch({ type: "FAVORITE_LOADING" });
     RestfulAdapter.deleteFetch("favorites", id).then(data => {
-      dispatch({ type: "FAV_LOAD", payload: data });
-    });
-  };
+      dispatch({ type: "FAV_DELETE",  payload: data })
+    })
+  }
 }
+
+
 
 export function searchRest(term, latitude, longitude) {
   return dispatch => {
@@ -68,7 +71,7 @@ export function chooseRestaurant(restaurant) {
 }
 
 export function closeRestaurant() {
-  return { type: "DELETE_RESTAURANT" };
+  return { type: "CLOSE_RESTAURANT" };
 }
 
 export function logIn(user) {
@@ -111,7 +114,7 @@ export const getLocation = () => {
             type: "NO_LOCATION"
           });
         } else {
-          console.log(position);
+          //console.log(position);
           dispatch({
             type: "GET_GEOLOCATION",
             payload: position
@@ -120,7 +123,7 @@ export const getLocation = () => {
         return position;
       })
       .then(position => {
-        console.log(position);
+        //console.log(position);
         fetchInitialRestaurants({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude

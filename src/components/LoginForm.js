@@ -30,7 +30,7 @@ class LoginForm extends Component {
     this.props
       .afterLogin(body)
       .then(user => this.props.handleLogin(user))
-      .catch(error => console.log(this.props.history.push("/")));
+      .catch(error => this.props.history.push("/"));
     this.setState({
       input: {
         email: "",

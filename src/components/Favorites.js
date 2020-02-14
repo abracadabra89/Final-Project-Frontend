@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import SingleMapContainer from "./SingleMapContainer";
 import { Button, Icon, Image, Modal, List } from "semantic-ui-react";
 import { deleteFavRestaurant } from "../actions";
+import { Redirect } from "react-router";
 
 class Profile extends Component {
   
 
   render() {
-    console.log(this.props.currentUser);
+    console.log("current user: ", this.props.currentUser);
     return (
       <div>
         {this.props.currentUser ? (
@@ -17,10 +18,14 @@ class Profile extends Component {
               <div className="ui segment">
                 <h3>Favorites</h3>
                 <List divided verticalAlign="middle" size="huge">
+                  {console.log(
+                    "current user favorites: ",
+                    this.props.currentUser.favorites
+                  )}
                   {this.props.currentUser.favorites !== undefined ? (
                     this.props.currentUser.favorites.map(rest => (
                       <List.Item key={rest.id}>
-                        {console.log(rest)}
+                        {console.log("current user fav restaurants: ", rest)}
                         <List.Content>
                           <Modal
                             trigger={<Button>{rest.name}</Button>}

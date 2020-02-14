@@ -4,8 +4,7 @@ const restaurantsReducer = (
   state = {
     restaurants: [],
     chosenRestaurant: null,
-    loading: true,
-    formData: { name: "", title: "", key_skill: "" }
+    loading: true
   },
   action
 ) => {
@@ -26,7 +25,7 @@ const restaurantsReducer = (
         ...state,
         chosenRestaurant: action.payload
       };
-    case "DELETE_RESTAURANT":
+    case "CLOSE_RESTAURANT":
       return {
         ...state,
         chosenRestaurant: null
@@ -36,12 +35,12 @@ const restaurantsReducer = (
   }
 };
 const userReducer = (
-  state = { loggedIn: false, currentUser: null, loading: false, location: {} },
+  state = { loggedIn: false, currentUser: null, loading: false, location: {}, favorites: {}},
   action
 ) => {
   switch (action.type) {
     case "LOG_IN":
-      console.log(action.payload);
+      //console.log(action.payload);
       return {
         ...state,
         loggedIn: true,
@@ -109,16 +108,26 @@ const userReducer = (
         loading: true
       };
     case "FAV_LOAD":
-      //console.log(action.payload);
       return {
         ...state,
         currentUser: {
           ...state.currentUser,
-          favorites: action.payload
         },
         loading: false
       };
-    default:
+
+      case 'FAV_DELETE':
+      return {
+        ...state,
+        favorites: {
+          ...state.currentUser.favorites,
+          favorites: state.currentUser.favorites.filter(
+            favorite => favorite.id !== action.payload
+          )
+        },
+        loading: false
+      };
+      default:
       return state;
   }
 };

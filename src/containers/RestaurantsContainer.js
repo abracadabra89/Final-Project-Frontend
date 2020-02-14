@@ -41,7 +41,6 @@ class RestaurantsContainer extends React.Component {
 
   render() {
     const { active } = this.state;
-    //console.log(this.props.location);
     return (
       <div className="ui grid">
         <Dimmer active={active} onClickOutside={this.handdleNear} page>

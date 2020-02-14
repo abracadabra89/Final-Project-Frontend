@@ -33,12 +33,18 @@ export class RestfulAdapter {
   }
 
   static deleteFetch(route, id) {
-    return (
-      fetch(`${url}/${route}/${id}`, {
-        method: "DELETE",
-        headers: headers()
-      }).then(handleResponse)
-    );
+    console.log('delete fav id: ',id)
+    return fetch(`${url}/${route}/${id}`, {
+      method: "DELETE",
+      headers: headers()
+    }).then(res => {
+        if (res.ok) {
+            return Promise.resolve('Favorite deleted.');
+        } else {
+            return Promise.reject('An error occurred.');
+        }
+    })
+    .then(res => console.log(res));
   }
 }
   
@@ -67,10 +73,23 @@ function postRequest(body) {
   
  function handleResponse(response) {
    if (response.ok) {
+     //console.log(response.status)
       return response.json()
     }
     throw alert('Something went wrong')
 }
+
+   const handleDelete = async(resp) => {
+     console.log('delete fav response:',resp)
+    return new Promise((resolve) => {
+      if (resp) {
+        resp.text().then(text => resolve(text)).catch(() => resolve())
+      } else {
+        resp.json()
+      }
+    })
+  }
+  
 
 
   
