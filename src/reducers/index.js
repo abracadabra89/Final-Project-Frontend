@@ -4,7 +4,7 @@ const restaurantsReducer = (
   state = {
     restaurants: [],
     chosenRestaurant: null,
-    loading: true
+    loading: false
   },
   action
 ) => {
@@ -29,13 +29,19 @@ const restaurantsReducer = (
       return {
         ...state,
         chosenRestaurant: null
-      };
+      }
     default:
       return state;
   }
 };
 const userReducer = (
-  state = { loggedIn: false, currentUser: null, loading: false, location: {}, favorites: {}},
+  state = {
+    loggedIn: false,
+    currentUser: null,
+    loading: false,
+    location: {},
+    favorites: {}
+  },
   action
 ) => {
   switch (action.type) {
@@ -97,10 +103,13 @@ const userReducer = (
     }
 
     case "NO_LOCATION":
-      return  {
+      return {
         ...state,
-        loading: false
-      }
+        location: {
+          latitude: null,
+          longitude: null
+        }
+      };
 
     case "FAV_LOADING":
       return {
@@ -112,25 +121,29 @@ const userReducer = (
         ...state,
         currentUser: {
           ...state.currentUser,
-        },
-        loading: false
-      };
-
-      case 'FAV_DELETE':
-      return {
-        ...state,
-        favorites: {
-          ...state.currentUser.favorites,
           favorites: state.currentUser.favorites.filter(
             favorite => favorite.id !== action.payload
           )
         },
         loading: false
       };
-      default:
+    default:
       return state;
   }
 };
+
+    // case "FAV_DELETE":
+    //   return {
+    //     ...state,
+    //     favorites: {
+    //       ...state.currentUser.favorites,
+    //       favorites: state.currentUser.favorites.filter(
+    //         favorite => favorite.id !== action.payload
+    //       )
+    //     },
+    //     loading: false
+    //   };
+    
 
 const rootReducer = combineReducers({
   user: userReducer,

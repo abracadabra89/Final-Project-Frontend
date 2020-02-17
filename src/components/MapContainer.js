@@ -130,7 +130,7 @@ export class MapContainer extends React.Component {
                     />
                   );
                 })
-              : (null)}
+              : null}
 
             <Marker
               id="current"
@@ -171,6 +171,5 @@ export default connect(mapStateToProps, {
 })(
   GoogleApiWrapper({
     KEY: KEY
-      
   })(MapContainer)
 );

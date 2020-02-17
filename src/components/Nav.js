@@ -25,7 +25,7 @@ class Nav extends Component {
       this.state.term,
       this.props.location.latitude,
       this.props.location.longitude
-    )
+    );
     input.value = "";
   };
 
@@ -39,7 +39,7 @@ class Nav extends Component {
               Home
             </NavLink>
             <div className="ui secondary menu">
-              <NavLink to="/favorites" className="link item" id='favorites'>
+              <NavLink to="/favorites" className="link item" id="favorites">
                 Favorites
               </NavLink>
             </div>

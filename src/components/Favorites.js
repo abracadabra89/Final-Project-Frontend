@@ -5,9 +5,7 @@ import { Button, Icon, Image, Modal, List } from "semantic-ui-react";
 import { deleteFavRestaurant } from "../actions";
 import { Redirect } from "react-router";
 
-class Profile extends Component {
-  
-
+class Favorites extends Component {
   render() {
     console.log("current user: ", this.props.currentUser);
     return (
@@ -86,4 +84,4 @@ const mapStateToProps = state => ({
   location: state.user.location
 });
 
-export default connect(mapStateToProps, { deleteFavRestaurant })(Profile);
+export default connect(mapStateToProps, { deleteFavRestaurant })(Favorites);

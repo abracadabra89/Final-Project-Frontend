@@ -48,7 +48,10 @@ export class SingleMapContainer extends React.Component {
                   key={restaurant.id}
                   onClick={this.onMarkerClick}
                   name={restaurant.name}
-                  position={{ lat: restaurant.latitude, lng: restaurant.longitude }}
+                  position={{
+                    lat: restaurant.latitude,
+                    lng: restaurant.longitude
+                  }}
                 />
               );
             })
@@ -68,7 +71,7 @@ export class SingleMapContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  favorites: state.user.currentUser.favorites,
+  favorites: state.user.currentUser.favorites
 });
 
 export default connect(mapStateToProps)(

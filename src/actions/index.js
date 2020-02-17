@@ -1,6 +1,5 @@
 import { RestfulAdapter } from "../adapters";
 
-
 export function fetchInitialRestaurants(location) {
   return dispatch => {
     dispatch({ type: "RESTAURANTS_LOADING" });
@@ -19,8 +18,9 @@ export function fetchInitialRestaurants(location) {
 export function createUser(body) {
   return dispatch => {
     dispatch({ type: "USER_LOADING" });
-    const newMessage = RestfulAdapter.createFetch("users", body)
-    .then(object => alert(object.msg));
+    const newMessage = RestfulAdapter.createFetch("users", body).then(object =>
+      alert(object.msg)
+    );
     dispatch({ type: "USER_LOADED" });
     return newMessage;
   };
@@ -47,14 +47,12 @@ export function postFavRestaurant(id) {
 
 export function deleteFavRestaurant(id) {
   return dispatch => {
-      dispatch({ type: "FAVORITE_LOADING" });
+    //dispatch({ type: "FAV_LOADING" });
     RestfulAdapter.deleteFetch("favorites", id).then(data => {
-      dispatch({ type: "FAV_DELETE",  payload: data })
-    })
-  }
+      dispatch({ type: "FAV_LOAD", payload: data });
+    });
+  };
 }
-
-
 
 export function searchRest(term, latitude, longitude) {
   return dispatch => {
