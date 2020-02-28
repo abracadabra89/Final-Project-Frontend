@@ -47,10 +47,9 @@ export function postFavRestaurant(id) {
 
 export function deleteFavRestaurant(id) {
   return dispatch => {
-    //dispatch({ type: "FAV_LOADING" });
-    RestfulAdapter.deleteFetch("favorites", id).then(data => {
-      dispatch({ type: "FAV_LOAD", payload: data });
-    });
+    RestfulAdapter.deleteFetch("favorites", id).then(
+      dispatch({ type: "FAV_LOAD", payload: id })
+    );
   };
 }
 
@@ -60,6 +59,7 @@ export function searchRest(term, latitude, longitude) {
     const body = { term: term, latitude: latitude, longitude: longitude };
     RestfulAdapter.createFetch("searches", body).then(data => {
       dispatch({ type: "RESTAURANTS_LOAD", payload: data });
+      console.log("search data: ", data);
     });
   };
 }

@@ -2,9 +2,6 @@ import React from "react";
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 import { connect } from "react-redux";
 
-const KEY =
-  "rHjt4KZNVRamu4cGM_nbGIHwLz08nG57OZREk97edmfNyiTh9cGHfoxHpd88DiRnnTLeFh4YJD2C-CTvnQOFFrA77IaQyQTJofaRGNjc93DIhZuzaKN24g8BpZwwXnYx";
-
 const style = {
   width: "100%",
   height: "80%"
@@ -55,8 +52,7 @@ export class SingleMapContainer extends React.Component {
                 />
               );
             })
-          : null}
-
+          : {}}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.infoWindow}
@@ -76,6 +72,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(
   GoogleApiWrapper({
-    KEY: KEY
+    apiKey: "AIzaSyCPIVVnH38IkCwA8vzYpB1iaCqfqyqx1Kc"
   })(SingleMapContainer)
 );

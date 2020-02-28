@@ -13,6 +13,14 @@ body {
 .a {
   color: black;
 }
+#navmenu {
+  color: white;
+}
+#search {
+  padding-top: 2.5px;
+  margin-top: 0.80em;
+  text-align: center;
+}
 
 h1 {
   text-align: center;
@@ -24,7 +32,7 @@ h1 {
    padding: 20px;
    font-family: 'Helvetica Neue';
    font-size: 1.25rem;
-   color: grey;
+   color: rgb(51, 50, 50);
    font-weight: bold;
    background: #ffffff;
    
@@ -78,16 +86,6 @@ h2 {
   color:#ffffff;
 }
 
-/* #home form {
-  margin: 1.1rem auto;
-  display: block;
-  padding: 1rem;
-  max-width: 350px;
-  box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.2);
-  background: #ffffff;
-  font-size: 1.25rem;
-} */
-
 
 #nav {
   background: #111;
@@ -122,9 +120,24 @@ h2 {
   background: #ffffff;
 }
 
+.search link icon {
+  align-items: center;
+  justify-content: flex-end;
+  
+}
+
 #nav #site-name {
-  margin-right: auto;
   background: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Helvetica';
+}
+
+ #site-name {
+  background: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Helvetica';
 }
 
 .a {
@@ -135,12 +148,16 @@ h2 {
 }
 
 a {
-  font-family: 'Helvetica Neue';
-  font-size: 1em;
+  font-family: 'Helvetica';
+  font-size: 1.3em;
   font-weight: normal;
   background: #ffffff;
   color: black;
 }
+.ui.button {
+  background: #ffffff;
+}
+
 
 img {
   border: 1px solid #ddd;
@@ -148,7 +165,7 @@ img {
   justify-content: flex-end;
 }
 .stacked.segment {
-color: black;
+color: rgb(0, 0, 0);
 background: #ffffff;
 } 
 

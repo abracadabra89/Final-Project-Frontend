@@ -33,7 +33,7 @@ class HomePage extends Component {
     const token = localStorage.getItem("token");
     //console.log(token);
     if (!!token) {
-      //console.log("token is there");
+      console.log("token is there");
     } else {
       localStorage.setItem("token", user.jwt);
     }

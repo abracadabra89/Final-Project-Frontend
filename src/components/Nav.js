@@ -35,11 +35,11 @@ class Nav extends Component {
       <div>
         {this.props.loggedIn ? (
           <div className="ui secondary menu">
-            <NavLink to="/" className="link item" id="site-name">
+            <NavLink to="/" className="link item" id="navmenu">
               Home
             </NavLink>
             <div className="ui secondary menu">
-              <NavLink to="/favorites" className="link item" id="favorites">
+              <NavLink to="/favorites" className="link item" id="navmenu">
                 Favorites
               </NavLink>
             </div>
@@ -60,7 +60,7 @@ class Nav extends Component {
                   ></i>
                 </div>
               </div>
-              <a className="item" onClick={this.handleLogout}>
+              <a className="item" id="navmenu" onClick={this.handleLogout}>
                 Logout
               </a>
             </div>

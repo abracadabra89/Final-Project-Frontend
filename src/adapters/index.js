@@ -35,12 +35,11 @@ export class RestfulAdapter {
   static deleteFetch(route, id) {
     console.log("delete fav id: ", id);
     return fetch(`${url}/${route}/${id}`, {
-      method: "DELETE",
-      headers: headers()
+      method: "DELETE"
     })
       .then(res => {
         if (res.ok) {
-          return Promise.resolve("Favorite deleted.");
+          return res;
         } else {
           return Promise.reject("An error occurred.");
         }
@@ -73,7 +72,6 @@ function postRequest(body) {
 
 function handleResponse(response) {
   if (response.ok) {
-    //console.log(response.status)
     return response.json();
   }
   throw alert("Something went wrong");

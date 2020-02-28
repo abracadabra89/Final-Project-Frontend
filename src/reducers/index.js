@@ -29,7 +29,7 @@ const restaurantsReducer = (
       return {
         ...state,
         chosenRestaurant: null
-      }
+      };
     default:
       return state;
   }
@@ -38,9 +38,9 @@ const userReducer = (
   state = {
     loggedIn: false,
     currentUser: null,
+    favorites: [],
     loading: false,
-    location: {},
-    favorites: {}
+    location: {}
   },
   action
 ) => {
@@ -117,33 +117,25 @@ const userReducer = (
         loading: true
       };
     case "FAV_LOAD":
+      //console.log(action.payload);
       return {
         ...state,
         currentUser: {
           ...state.currentUser,
-          favorites: state.currentUser.favorites.filter(
-            favorite => favorite.id !== action.payload
-          )
-        },
-        loading: false
-      };
+          favorites: state.currentUser.favorites.map(favorite => {
+            if (favorite.id === action.payload) {
+              return action.payload;
+            } else {
+              return favorite;
+            }
+          })
+        }
+      }
     default:
       return state;
   }
 };
 
-    // case "FAV_DELETE":
-    //   return {
-    //     ...state,
-    //     favorites: {
-    //       ...state.currentUser.favorites,
-    //       favorites: state.currentUser.favorites.filter(
-    //         favorite => favorite.id !== action.payload
-    //       )
-    //     },
-    //     loading: false
-    //   };
-    
 
 const rootReducer = combineReducers({
   user: userReducer,

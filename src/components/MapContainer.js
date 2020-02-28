@@ -8,9 +8,6 @@ import {
   chooseRestaurant
 } from "../actions";
 
-const KEY =
-  "rHjt4KZNVRamu4cGM_nbGIHwLz08nG57OZREk97edmfNyiTh9cGHfoxHpd88DiRnnTLeFh4YJD2C-CTvnQOFFrA77IaQyQTJofaRGNjc93DIhZuzaKN24g8BpZwwXnYx";
-
 const style = {
   width: "100%",
   height: "92.5%"
@@ -75,18 +72,6 @@ export class MapContainer extends React.Component {
     });
   };
 
-  mapClicked = (mapProps, map, clickEvent) => {
-    const thisLatidude = clickEvent.latLng.lat();
-    const thisLongitude = clickEvent.latLng.lng();
-    const chosenLocation = {
-      latitude: thisLatidude,
-      longitude: thisLongitude
-    };
-    this.props.getNewLocation(chosenLocation);
-    this.setState({ infoWindow: false });
-    this.props.searchRest("Italian", thisLatidude, thisLongitude);
-  };
-
   render() {
     const asset = {
       url:
@@ -113,7 +98,6 @@ export class MapContainer extends React.Component {
               lng: this.props.location.longitude
             }}
             zoom={12}
-            onClick={this.mapClicked}
           >
             {this.props.restaurants
               ? this.props.restaurants.map(restaurant => {
@@ -170,6 +154,6 @@ export default connect(mapStateToProps, {
   chooseRestaurant
 })(
   GoogleApiWrapper({
-    KEY: KEY
+    apiKey: "AIzaSyCPIVVnH38IkCwA8vzYpB1iaCqfqyqx1Kc"
   })(MapContainer)
 );

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import SingleMapContainer from "./SingleMapContainer";
 import { Button, Icon, Image, Modal, List } from "semantic-ui-react";
 import { deleteFavRestaurant } from "../actions";
-import { Redirect } from "react-router";
 
 class Favorites extends Component {
   render() {
@@ -16,14 +15,13 @@ class Favorites extends Component {
               <div className="ui segment">
                 <h3>Favorites</h3>
                 <List divided verticalAlign="middle" size="huge">
-                  {console.log(
+                  {/* {console.log(
                     "current user favorites: ",
                     this.props.currentUser.favorites
-                  )}
+                  )} */}
                   {this.props.currentUser.favorites !== undefined ? (
                     this.props.currentUser.favorites.map(rest => (
-                      <List.Item key={rest.id}>
-                        {console.log("current user fav restaurants: ", rest)}
+                      <List.Item key={rest.id} rest={rest}>
                         <List.Content>
                           <Modal
                             trigger={<Button>{rest.name}</Button>}
@@ -64,7 +62,7 @@ class Favorites extends Component {
                       </List.Item>
                     ))
                   ) : (
-                    <p>Loading...</p>
+                    <p>loading</p>
                   )}
                 </List>
               </div>
@@ -72,16 +70,18 @@ class Favorites extends Component {
             <SingleMapContainer />
           </div>
         ) : (
-          <p></p>
+          <p>loading</p>
         )}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser,
-  location: state.user.location
-});
+function mapStateToProps(state) {
+  return {
+    currentUser: state.user.currentUser,
+    location: state.user.location
+  };
+}
 
 export default connect(mapStateToProps, { deleteFavRestaurant })(Favorites);
