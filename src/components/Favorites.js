@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SingleMapContainer from "./SingleMapContainer";
+import SingleMapContainer from "./SingleRestaurantContainer";
 import { Button, Icon, Image, Modal, List } from "semantic-ui-react";
 import { deleteFavRestaurant } from "../actions";
 
@@ -54,7 +54,7 @@ class Favorites extends Component {
                                   this.props.deleteFavRestaurant(rest.id)
                                 }
                               >
-                                Delete <Icon name="close" />
+                                Delete <Icon name="close"/>
                               </Button>
                             </Modal.Actions>
                           </Modal>

@@ -7,7 +7,7 @@ const style = {
   height: "80%"
 };
 
-export class SingleMapContainer extends React.Component {
+export class SingleRestaurantContainer extends React.Component {
   state = {
     chosenPlace: {},
     activeMarker: {},
@@ -73,5 +73,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(
   GoogleApiWrapper({
     apiKey: "AIzaSyCPIVVnH38IkCwA8vzYpB1iaCqfqyqx1Kc"
-  })(SingleMapContainer)
+  })(SingleRestaurantContainer)
 );

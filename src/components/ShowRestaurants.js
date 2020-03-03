@@ -30,7 +30,7 @@ class ShowRestaurants extends React.Component {
         <div className="column"></div>
         <Button
           floated="right"
-          icon="close"
+          icon="white close"
           onClick={() => this.props.closeRestaurant()}
         />
         <div className="content"></div>
@@ -48,13 +48,21 @@ class ShowRestaurants extends React.Component {
             >
               {address}
               <br></br>
+              <br></br>
             </a>
           </h4>
         </div>
         <div className="ui four column doubling stackable grid container">
-          <Button basic fluid onClick={() => this.props.addFav(id)}>
+          <br></br>
+          <Button
+            basic
+            color="white"
+            fluid
+            onClick={() => this.props.addFav(id)}
+          >
             Add to ❤️
           </Button>
+          <br></br>
         </div>
       </div>
     );

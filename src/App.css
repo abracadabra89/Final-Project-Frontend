@@ -1,5 +1,5 @@
 body {
-  background: #ffffff url("https://images.unsplash.com/photo-1558201203-db053afbff44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80") 80% 30%;
+  background: #ffffff url('https://cdn.vox-cdn.com/thumbor/bLZTfUtGS1fbXgb4tR6GhIh0s7c=/0x0:3000x2000/1200x800/filters:focal(1260x760:1740x1240)/cdn.vox-cdn.com/uploads/chorus_image/image/66019098/Veronika_Adrian_Gaut1.0.jpg') 80% 30%;
 }
 
 .landing.segment {
@@ -8,6 +8,10 @@ body {
 
 .a.link.item {
   background:#ffffff;
+}
+
+.ui.button {
+  background: #ffffff;
 }
 
 .a {
@@ -19,7 +23,6 @@ body {
 #search {
   padding-top: 2.5px;
   margin-top: 0.80em;
-  text-align: center;
 }
 
 h1 {
@@ -38,8 +41,7 @@ h1 {
    
 }
 
-.landing h1,
-h2 {
+.landing h2 {
   text-align: center;
    font-family: 'Helvetica';
    
@@ -121,9 +123,7 @@ h2 {
 }
 
 .search link icon {
-  align-items: center;
-  justify-content: flex-end;
-  
+  justify-content: flex-end; 
 }
 
 #nav #site-name {
@@ -141,7 +141,7 @@ h2 {
 }
 
 .a {
-  font-size: 1.8em;
+  font-size: 1.3em;
   font-weight: normal;
   background: #ffffff;
   color: black;
@@ -149,13 +149,14 @@ h2 {
 
 a {
   font-family: 'Helvetica';
-  font-size: 1.3em;
+  font-size: 1em;
   font-weight: normal;
   background: #ffffff;
   color: black;
 }
-.ui.button {
+.ui.basic.fluid.button {
   background: #ffffff;
+  color: black;
 }
 
 

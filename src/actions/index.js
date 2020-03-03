@@ -40,7 +40,7 @@ export function postFavRestaurant(id) {
     dispatch({ type: "FAV_LOADING" });
     const body = { business_id: id };
     RestfulAdapter.createFetch("favorites", body).then(data => {
-      dispatch({ type: "FAV_LOAD", payload: data });
+      dispatch({ type: "FAV_UPDATE", payload: data });
     });
   };
 }
@@ -48,7 +48,7 @@ export function postFavRestaurant(id) {
 export function deleteFavRestaurant(id) {
   return dispatch => {
     RestfulAdapter.deleteFetch("favorites", id).then(
-      dispatch({ type: "FAV_LOAD", payload: id })
+      dispatch({ type: "FAV_UPDATE", payload: id })
     );
   };
 }

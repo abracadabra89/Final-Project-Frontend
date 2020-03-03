@@ -9,7 +9,7 @@ import {
 } from "../actions";
 
 const style = {
-  width: "100%",
+  width: "90%",
   height: "92.5%"
 };
 

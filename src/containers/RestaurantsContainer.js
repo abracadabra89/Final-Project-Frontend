@@ -44,7 +44,7 @@ class RestaurantsContainer extends React.Component {
     return (
       <div className="ui grid">
         <Dimmer active={active} onClickOutside={this.handdleNear} page>
-          <Button basic color="teal" onClick={this.handleSearch}>
+          <Button basic color="yellow" onClick={this.handleSearch}>
             Find restaurants
           </Button>
         </Dimmer>

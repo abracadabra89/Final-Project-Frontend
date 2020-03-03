@@ -116,7 +116,7 @@ const userReducer = (
         ...state,
         loading: true
       };
-    case "FAV_LOAD":
+    case "FAV_UPDATE":
       //console.log(action.payload);
       return {
         ...state,
