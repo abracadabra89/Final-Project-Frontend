@@ -23,6 +23,7 @@ class SignupForm extends Component {
 
   render() {
     const { input } = this.state;
+    //console.log('signup form input state: ', this.state)
     return (
       <div className="ui segment center landing masthead">
         <div className="ui text container">

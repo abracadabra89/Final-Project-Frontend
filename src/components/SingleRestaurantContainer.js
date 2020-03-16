@@ -15,7 +15,7 @@ export class SingleRestaurantContainer extends React.Component {
   };
 
   mapClicked = (mapProps, map, clickEvent) => {
-    console.log(mapProps);
+   // console.log(mapProps);
     console.log(clickEvent);
   };
 

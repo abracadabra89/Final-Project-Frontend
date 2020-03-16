@@ -7,7 +7,6 @@ import RestaurantsContainer from "../containers/RestaurantsContainer";
 class HomePage extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
-    //console.log(token);
     if (
       token &&
       token !== undefined &&
@@ -38,6 +37,7 @@ class HomePage extends Component {
       localStorage.setItem("token", user.jwt);
     }
     this.props.logIn(user);
+    //console.log('logging in user: ', user)
   };
 
   render() {
@@ -63,6 +63,7 @@ class HomePage extends Component {
 }
 
 function mapStateToProps(state) {
+  //console.log('logged in user state: ', state)
   return {
     loggedIn: state.user.loggedIn
   };

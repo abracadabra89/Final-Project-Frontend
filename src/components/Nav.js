@@ -30,7 +30,7 @@ class Nav extends Component {
   };
 
   render() {
-    //console.log(this.props)
+    //console.log("nav props: ", this.props)
     return (
       <div>
         {this.props.loggedIn ? (

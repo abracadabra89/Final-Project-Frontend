@@ -20,10 +20,13 @@ class RestaurantsContainer extends React.Component {
     if (this.props.location !== prevProps.location) {
       this.props.fetchInitialRestaurants(this.props.location);
     }
+    //console.log('loaction props: ', this.props.location)
   }
 
   handleFavClick = id => {
+    //console.log('A')
     this.props.postFavRestaurant(id);
+    //console.log('B')
   };
 
   handleSearch = e => {
@@ -41,6 +44,7 @@ class RestaurantsContainer extends React.Component {
 
   render() {
     const { active } = this.state;
+      //console.log("restaurants props: ", this.props);
     return (
       <div className="ui grid">
         <Dimmer active={active} onClickOutside={this.handdleNear} page>

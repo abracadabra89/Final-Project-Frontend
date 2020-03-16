@@ -5,6 +5,7 @@ import { Button } from "semantic-ui-react";
 
 const RestaurantList = props => {
   const { restaurant } = props;
+  //console.log('restList props: ', props)
   return (
     <div
       className="ui clearing segment"

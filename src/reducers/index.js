@@ -40,13 +40,14 @@ const userReducer = (
     currentUser: null,
     favorites: [],
     loading: false,
-    location: {}
+    location: {},
+    sorting: "asc"
   },
   action
 ) => {
   switch (action.type) {
     case "LOG_IN":
-      //console.log(action.payload);
+      // console.log('log in payload: ', action.payload);
       return {
         ...state,
         loggedIn: true,
@@ -65,6 +66,7 @@ const userReducer = (
         loading: true
       };
     case "USER_LOAD":
+      console.log("user load payload: ", action.payload);
       return {
         ...state,
         currentUser: action.payload,
@@ -110,6 +112,16 @@ const userReducer = (
           longitude: null
         }
       };
+    case "FAV_SORT":
+      //console.log(state.currentUser.favorites)
+      return {
+        ...state,
+         sorting: state.sorting === DESC ? ASC : DESC, 
+        currentUser: {
+          ...state.currentUser,
+          favorites: sortFavs(state.currentUser.favorites, state.sorting)   
+  }
+    }
 
     case "FAV_LOADING":
       return {
@@ -117,7 +129,7 @@ const userReducer = (
         loading: true
       };
     case "FAV_UPDATE":
-      //console.log(action.payload);
+      //console.log('fav update payload: ', action.payload)
       return {
         ...state,
         currentUser: {
@@ -130,12 +142,27 @@ const userReducer = (
             }
           })
         }
-      }
+      };
     default:
       return state;
   }
 };
 
+const ASC = "asc";
+const DESC = "desc";
+
+function sortFavs(favs, direction){
+  console.log(direction)
+  return favs.sort(function(a, b) {
+  if (a.name > b.name) return direction === ASC ? 1 : -1
+  if (b.name > a.name) return direction === ASC ? -1 : 1 
+  return 0;
+}
+ )}
+
+
+
+// combine the reducers into a single state tree
 
 const rootReducer = combineReducers({
   user: userReducer,

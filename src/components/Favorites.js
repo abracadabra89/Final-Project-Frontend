@@ -3,16 +3,21 @@ import { connect } from "react-redux";
 import SingleMapContainer from "./SingleRestaurantContainer";
 import { Button, Icon, Image, Modal, List } from "semantic-ui-react";
 import { deleteFavRestaurant } from "../actions";
+import { sortFavRestaurant } from "../actions";
 
-class Favorites extends Component {
+class Favorites extends Component {   
+
   render() {
-    console.log("current user: ", this.props.currentUser);
+    //console.log("current user: ", this.props.currentUser);
     return (
       <div>
         {this.props.currentUser ? (
           <div>
             <div className="ui container">
               <div className="ui segment">
+                <Button primary onClick={() => this.props.sortFavRestaurant()}>
+                  Sort <Icon name="sort alphabet down" />
+                </Button>
                 <h3>Favorites</h3>
                 <List divided verticalAlign="middle" size="huge">
                   {/* {console.log(
@@ -54,7 +59,7 @@ class Favorites extends Component {
                                   this.props.deleteFavRestaurant(rest.id)
                                 }
                               >
-                                Delete <Icon name="close"/>
+                                Delete <Icon name="close" />
                               </Button>
                             </Modal.Actions>
                           </Modal>
@@ -75,13 +80,18 @@ class Favorites extends Component {
       </div>
     );
   }
+  
 }
 
 function mapStateToProps(state) {
   return {
     currentUser: state.user.currentUser,
-    location: state.user.location
+    location: state.user.location,
   };
 }
 
-export default connect(mapStateToProps, { deleteFavRestaurant })(Favorites);
+
+export default connect(mapStateToProps, {
+  deleteFavRestaurant,
+  sortFavRestaurant
+})(Favorites);

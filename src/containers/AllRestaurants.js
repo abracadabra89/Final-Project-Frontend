@@ -4,6 +4,7 @@ import { List } from "semantic-ui-react";
 
 class AllRestaurants extends React.Component {
   render() {
+    //console.log('all rest props: ', this.props.restaurants)
     return (
       <div>
         {this.props.restaurants !== undefined ? (

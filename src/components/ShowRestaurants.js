@@ -9,8 +9,8 @@ const style = {
 };
 
 class ShowRestaurants extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       active: false
     };
@@ -18,48 +18,35 @@ class ShowRestaurants extends React.Component {
 
   render() {
     const {
-      id,
-      image_url,
-      name,
-      address,
-      latitude,
-      longitude
+      id,image_url,name, address,latitude,longitude
     } = this.props.chosenRestaurant;
+   // console.log('chosen rest props: ', this.props.chosenRestaurant)
     return (
       <div className="ui container segment center aligned" style={style}>
         <div className="column"></div>
         <Button
           floated="right"
-          icon="white close"
-          onClick={() => this.props.closeRestaurant()}
-        />
+          icon="close"
+          onClick={() => this.props.closeRestaurant()}/>
         <div className="content"></div>
         <a className="header">
-          <h4>{name}</h4>
-        </a>
+          <h4>{name}</h4></a>
         <div className="ui fluid card">
           <div className="ui small centered image">
             <img src={image_url} styles={{ maxHeight: "12px" }} alt=""></img>
-          </div>
-          <h4>
+          </div><h4>
             <a
               target="_new"
-              href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.location.latitude}%2C${this.props.location.longitude}&destination=${latitude}%2C${longitude}`}
-            >
+              href={`https://www.google.com/maps/dir/?api=1&origin=${this.props.location.latitude}%2C${this.props.location.longitude}&destination=${latitude}%2C${longitude}`} >
               {address}
-              <br></br>
-              <br></br>
             </a>
           </h4>
         </div>
         <div className="ui four column doubling stackable grid container">
-          <br></br>
-          <Button
-            basic
-            color="white"
+          <Button basic
+            color="yellow"
             fluid
-            onClick={() => this.props.addFav(id)}
-          >
+            onClick={() => this.props.addFav(id)}>
             Add to ❤️
           </Button>
           <br></br>

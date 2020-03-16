@@ -24,6 +24,7 @@ export class MapContainer extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    //console.log('map nextProps: ', nextProps, 'map nextState: ', nextState)
     if (
       this.state.activeMarker === nextState.activeMarker &&
       this.props === nextProps
@@ -54,6 +55,7 @@ export class MapContainer extends React.Component {
   };
 
   handleMouseRemove = e => {
+    //console.log('mouseRemove event :', e)
     this.setState({
       chosenPlace: {},
       activeMarker: {},
@@ -73,6 +75,7 @@ export class MapContainer extends React.Component {
   };
 
   render() {
+    //console.log('map container props: ', this.props)
     const asset = {
       url:
         "https://icons-for-free.com/iconfiles/png/512/location-131965017472890605.png",
@@ -146,6 +149,7 @@ const mapStateToProps = state => ({
   location: state.user.location,
   loading: state.user.loading
 });
+
 
 export default connect(mapStateToProps, {
   getNewLocation,

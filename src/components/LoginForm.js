@@ -2,14 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { afterLogin } from "../actions";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Message,
-  Segment
-} from "semantic-ui-react";
+import {Button, Form, Grid, Header, Message, Segment} from "semantic-ui-react";
 
 class LoginForm extends Component {
   state = {
@@ -20,13 +13,17 @@ class LoginForm extends Component {
   };
 
   handleChange = e => {
+
     const newInput = { ...this.state.input, [e.target.name]: e.target.value };
     this.setState({ input: newInput });
+    //console.log("handle change event, new input: ", e, newInput);
   };
 
   handleSubmit = e => {
     e.preventDefault();
     const body = this.state.input;
+    //console.log('handleSubmit event,  body: ', e, body)
+    //console.log('handleSubmit props: ', this.props)
     this.props
       .afterLogin(body)
       .then(user => this.props.handleLogin(user))
@@ -41,6 +38,7 @@ class LoginForm extends Component {
 
   render() {
     const { input } = this.state;
+    //console.log('login form state: ', this.state)
     return (
       <Grid
         textAlign="center"

@@ -33,7 +33,7 @@ export class RestfulAdapter {
   }
 
   static deleteFetch(route, id) {
-    console.log("delete fav id: ", id);
+    //console.log("delete fetch id: ", id);
     return fetch(`${url}/${route}/${id}`, {
       method: "DELETE"
     })
@@ -71,6 +71,7 @@ function postRequest(body) {
 }
 
 function handleResponse(response) {
+  //console.log('response: ', response)
   if (response.ok) {
     return response.json();
   }
