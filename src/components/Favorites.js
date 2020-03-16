@@ -3,11 +3,25 @@ import { connect } from "react-redux";
 import SingleMapContainer from "./SingleRestaurantContainer";
 import { Button, Icon, Image, Modal, List } from "semantic-ui-react";
 import { deleteFavRestaurant } from "../actions";
-import { sortFavRestaurant } from "../actions";
 
-class Favorites extends Component {   
+class Favorites extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sorting: "asc",
+      favorites: []
+    };
+  }
 
   render() {
+    let sortFavs = (favs, direction) => {
+      console.log(direction);
+      return favs.sort(function(a, b) {
+        if (a.name > b.name) return direction === "asc" ? 1 : -1;
+        if (b.name > a.name) return direction === "asc" ? -1 : 1;
+        return 0;
+      });
+    };
     //console.log("current user: ", this.props.currentUser);
     return (
       <div>
@@ -15,15 +29,22 @@ class Favorites extends Component {
           <div>
             <div className="ui container">
               <div className="ui segment">
-                <Button primary onClick={() => this.props.sortFavRestaurant()}>
+                <Button
+                  primary
+                  onClick={() =>
+                    this.setState({
+                      sorting: this.state.sorting === "desc" ? "asc" : "desc",
+                      favorites: sortFavs(
+                        this.props.currentUser.favorites,
+                        this.state.sorting
+                      )
+                    })
+                  }
+                >
                   Sort <Icon name="sort alphabet down" />
                 </Button>
                 <h3>Favorites</h3>
                 <List divided verticalAlign="middle" size="huge">
-                  {/* {console.log(
-                    "current user favorites: ",
-                    this.props.currentUser.favorites
-                  )} */}
                   {this.props.currentUser.favorites !== undefined ? (
                     this.props.currentUser.favorites.map(rest => (
                       <List.Item key={rest.id} rest={rest}>
@@ -80,18 +101,15 @@ class Favorites extends Component {
       </div>
     );
   }
-  
 }
 
 function mapStateToProps(state) {
   return {
     currentUser: state.user.currentUser,
-    location: state.user.location,
+    location: state.user.location
   };
 }
 
-
 export default connect(mapStateToProps, {
-  deleteFavRestaurant,
-  sortFavRestaurant
+  deleteFavRestaurant
 })(Favorites);
