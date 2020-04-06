@@ -22,6 +22,8 @@ export function fetchInitialRestaurants(location) {
       //console.log('searches data: ', data)
       dispatch({ type: "USER_LOADED" });
     });
+   console.log("create fetch: ", "world");
+
   };
 }
 

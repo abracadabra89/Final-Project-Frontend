@@ -1,7 +1,8 @@
 import React from "react";
 import { chooseRestaurant } from "../actions";
 import { connect } from "react-redux";
-import { Button } from "semantic-ui-react";
+import { Rating, Button } from "semantic-ui-react";
+
 
 const RestaurantList = props => {
   const { restaurant } = props;
@@ -13,11 +14,17 @@ const RestaurantList = props => {
         props.chooseRestaurant(restaurant);
       }}
     >
-      <p>{restaurant.name}</p>
+      <h4>
+        {restaurant.name}{" "}
+        <br></br>
+        <Rating defaultRating={restaurant.rating} maxRating={5} />
+       <br></br> {restaurant.price}
+      </h4>
       <Button basic color="grey">
         <span role="img" aria-label="food">
           🍵 🍽🥗
         </span>
+        {restaurant.distance}
       </Button>
     </div>
   );

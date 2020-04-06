@@ -18,12 +18,14 @@ function headers() {
 
 export class RestfulAdapter {
   static indexFetch(route) {
+    console.log('index fetch: ', 'hello')
     return fetch(`${url}/${route}`, getRequest()).then(handleResponse);
   }
   static showFetch(route, id) {
     return fetch(`${url}/${route}/${id}`, getRequest()).then(handleResponse);
   }
   static createFetch(route, body) {
+        console.log("create fetch: ", "hello");
     return fetch(`${url}/${route}`, postRequest(body)).then(handleResponse);
   }
   static editFetch(route, id, body) {
@@ -71,7 +73,7 @@ function postRequest(body) {
 }
 
 function handleResponse(response) {
-  //console.log('response: ', response)
+  console.log("!")
   if (response.ok) {
     return response.json();
   }

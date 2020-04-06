@@ -13,7 +13,9 @@ class Favorites extends Component {
     };
   }
 
+
   render() {
+    //react implementation of the sorting feature
     let sortFavs = (favs, direction) => {
       console.log(direction);
       return favs.sort(function(a, b) {
@@ -22,7 +24,8 @@ class Favorites extends Component {
         return 0;
       });
     };
-    //console.log("current user: ", this.props.currentUser);
+
+
     return (
       <div>
         {this.props.currentUser ? (

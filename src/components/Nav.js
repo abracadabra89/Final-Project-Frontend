@@ -42,6 +42,7 @@ class Nav extends Component {
               <NavLink to="/favorites" className="link item" id="navmenu">
                 Favorites
               </NavLink>
+              <div className="logo"></div>
             </div>
             <div className="right menu">
               <div className="ui fluid category search">
@@ -66,10 +67,18 @@ class Nav extends Component {
             </div>
           </div>
         ) : (
-          <div className="ui menu">
-            <NavLink to="/" exact className="link active item" id="site-name">
-              AppEtite
-            </NavLink>
+          <div>
+            <div
+              className="logo"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                height: "110px",
+                width: "210px",
+                padding: "70px",
+                alignItems: "stretch"
+              }}
+            ></div>
           </div>
         )}
       </div>
